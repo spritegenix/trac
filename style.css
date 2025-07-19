@@ -15461,6 +15461,7 @@ figcaption {
     line-height: 115%;
     position: static;
 }
+
 .rotating-gradient-text {
     /* background-image: linear-gradient(38deg, var(--dawn-red), var(--purple--600-â˜…)51%, var(--teal--600-â˜…)); */
     background-image: linear-gradient(90deg, var(--trac-red), var(--trac-purple) , var(--trac-blue));
