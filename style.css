@@ -7915,6 +7915,7 @@ figcaption {
 }
 .uui-logo_image {
     flex: none;
+    max-width: 150px;
     width: 100%;
     height: auto;
     display: block;
@@ -13128,10 +13129,10 @@ figcaption {
 }
 .marquee-slide {
     flex: none;
-    height: 40px;
+    height: 150px;
 }
 .logo-image2 {
-    height: 24px;
+    height: 150px;
 }
 .no-pad {
     padding: 0;
@@ -25979,7 +25980,7 @@ h5 {
     padding-right: 0;
 }
 .uui-logo_image {
-    max-width: 90px;
+    max-width: 130px;
 }
 .uui-navbar01_component {
     background-color: #ffffffd9;
