@@ -8542,7 +8542,7 @@ figcaption {
     display: flex;
 }
 .con-3up-card-inner.framed {
-    padding: 44px;
+    padding: 42px;
 }
 .con-3up-card-inner.framed:hover {
     text-decoration: none;
@@ -11631,7 +11631,7 @@ figcaption {
     align-self: flex-start;
     width: 40vw;
     max-width: 450px;
-    height: auto;
+    min-height: 300px;
     margin-right: 24px;
     padding: 32px;
 }
@@ -11644,7 +11644,7 @@ figcaption {
     color: var(--midnight--500);
     text-indent: -7px;
     white-space: normal;
-    height: auto;
+    min-height: 150px;
     padding-left: 7px;
     font-family: Inter V \- Subset, Arial, sans-serif;
     font-size: 16px;
@@ -15483,7 +15483,7 @@ figcaption {
 .hero-subhed {
     color: var(--midnight--500);
     letter-spacing: -.02em;
-    max-width: 55ch;
+    max-width: 75ch;
     margin-top: -12px;
     margin-left: auto;
     margin-right: auto;
@@ -17704,7 +17704,7 @@ figure {
     width: 80vw;
     top: 5vw;
     left: 10vw;
-    height: 30vw;
+    height: 25vw;
 }
 .integrations-collection-list {
     grid-template-columns: 1fr 1fr;
