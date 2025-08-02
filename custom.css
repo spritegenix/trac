@@ -1,0 +1,164 @@
+   :root {
+      --trac-red:#FF4B91;
+      --trac-purple:#A94CFC;
+      --trac-blue:#2D9CDB;
+    }
+
+
+    .cta-button-flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+}
+.button-cta{
+    max-width: 300px !important;
+}
+@media (min-width:1025px) {
+.fs-lg-5{
+    font-size: large;
+} 
+.font-md{
+    font-size: 30px;
+}  
+
+}
+
+@media (max-width:1024px) {
+    .hero3-ui-outer{
+        margin-top: -300px;
+    }
+
+}
+
+@media (min-width:769px) {
+    .little-gap{
+/* width: fit-content; */
+padding-right: 20px;
+margin: auto;
+}
+.card-1{
+    height: 105%;
+}
+}
+@media (max-width:768px) {
+    .hero3-ui-outer{
+        margin-top: -260px;
+    }
+    .cta-button-flex{
+    
+   flex-direction: column;
+    
+}
+.py-0{
+        padding-top: 0;
+        padding-bottom: 0;
+     }
+}
+
+@media (max-width:479px) {
+    .hero3{
+        min-height: 1075px;
+    }
+    .big-card-1{
+        min-height:700px
+    }
+    /* .hero3-ui-outer{
+        margin-top: -220px;
+    } */
+     .mx-sm-0{
+        margin-left: 0;
+        margin-right: 0;
+     }
+     .height-600{
+        min-height: 600px;
+                background-size: 1800px;
+     }
+     .display-sm-none{
+        display: none;
+     }
+     .pb-0{
+        padding-bottom: 0;
+     }
+     .py-0{
+        padding-top: 0;
+        padding-bottom: 0;
+     }
+}
+
+.step-card{
+    min-height: 350px;
+}
+
+.why-trac{
+     max-width: 400px;
+}
+
+
+.mx-auto{
+    margin-left: auto;
+    margin-right: auto;
+}
+.pb-50{
+    padding-bottom: 50px;
+}
+.py-50{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.pt-50{
+    padding-top: 50px !important;
+}
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.flex-col{
+    flex-direction: column;
+}
+.justify-center{
+    justify-content: center;
+}
+.items-center{
+    align-items: center;
+}
+
+
+                    /* @media (max-width: 768px) {
+                      table {
+                        display: none;
+                      }
+                    } */
+
+                    table {
+                      border-collapse: collapse;
+                      width: 100%;
+                      font-family: 'Inter', Arial, sans-serif;
+                      table-layout: fixed;
+                      font-size: 16px;
+                      color: #333;
+                    }
+
+                    th,
+                    td {
+                      border: 1px solid #ccc;
+                      padding: 12px;
+                      text-align: left;
+                      vertical-align: top;
+                      white-space: pre-line;
+                      font-weight: normal;
+                      
+                    }
+
+                    thead th {
+                      background-color: #f4f4f4;
+                      font-weight: bold;
+                    }
+
+                    tbody th {
+                      background-color: #f9f9f9;
+                      font-weight: bold;
+                    }
+                
