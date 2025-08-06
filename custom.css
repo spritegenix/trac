@@ -14,6 +14,39 @@
 .button-cta{
     max-width: 300px !important;
 }
+
+.cross-heading{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+   
+}
+.cross-heading img{
+        width: 85px !important;
+        height: auto !important;
+    }
+.cross-heading h3{
+    font-size: xx-large !important;
+}
+
+.element {
+  border: 4px solid transparent;
+  border-radius: 24px;
+  background: 
+    linear-gradient(white, white) padding-box,
+    linear-gradient(to right, var(--trac-red), var(--trac-purple) 54%, var(--trac-blue)) border-box;
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+}
+.w-embed1{
+    border: 4px solid transparent;
+
+  background: 
+    linear-gradient(white, white) padding-box,
+    linear-gradient(to right, var(--trac-red), var(--trac-purple) 54%, var(--trac-blue)) border-box;
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;  
+}
 @media (min-width:1025px) {
 .fs-lg-5{
     font-size: large;
@@ -40,6 +73,9 @@ margin: auto;
 .card-1{
     height: 105%;
 }
+.flex ._3up-card{
+    width: 300px;
+}
 }
 @media (max-width:768px) {
     .hero3-ui-outer{
@@ -49,6 +85,9 @@ margin: auto;
     
    flex-direction: column;
     
+}
+.cross-heading h3{
+    font-size: x-large !important;
 }
 .py-0{
         padding-top: 0;
@@ -103,8 +142,8 @@ margin: auto;
     padding-bottom: 50px;
 }
 .py-50{
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 50px !important;
+    padding-bottom: 50px !important;
 }
 
 .pt-50{
@@ -139,11 +178,12 @@ margin: auto;
                       table-layout: fixed;
                       font-size: 16px;
                       color: #333;
+                     
                     }
-
+                 
                     th,
                     td {
-                      border: 1px solid #ccc;
+                      border: 1px solid #A94CFC;
                       padding: 12px;
                       text-align: left;
                       vertical-align: top;
@@ -151,6 +191,7 @@ margin: auto;
                       font-weight: normal;
                       
                     }
+
 
                     thead th {
                       background-color: #f4f4f4;
@@ -162,3 +203,13 @@ margin: auto;
                       font-weight: bold;
                     }
                 
+.flex ._3up-card{
+    min-width: 300px;
+}
+                    .flex .con-3up-card-inner{
+min-height: 200px;
+                    }
+
+                    .text-center{
+                        text-align: center;
+                    }

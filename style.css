@@ -11627,6 +11627,7 @@ figcaption {
     background-color: #794aff1a;
 }
 .testimon-carousel-item {
+     position: relative;
     background-color: var(--midnight--50-ui-bg);
     border-radius: 32px;
     align-self: flex-start;
@@ -11635,7 +11636,25 @@ figcaption {
     min-height: 300px;
     margin-right: 24px;
     padding: 32px;
+    /* Remove background-image/background-position/background-size/background-repeat from here */
+    overflow: hidden;
 }
+
+.testimon-carousel-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("images/icons/quotes.png");
+    background-position: center 50px;
+    background-size: 128px;
+    background-repeat: no-repeat;
+    opacity: 0.4; /* <--- Adjust the value as needed (0.0 to 1.0) */
+    pointer-events: none; /* Allow clicks through the overlay */
+    border-radius: 32px; /* So overlay matches parent corners */
+
+}
+
+
 .collection-list-2 {
     justify-content: space-between;
     align-items: stretch;
@@ -11650,6 +11669,7 @@ figcaption {
     font-family: Inter V \- Subset, Arial, sans-serif;
     font-size: 16px;
     font-weight: 400;
+    text-wrap: balance;
 }
 .testimon2-name {
     margin-top: 6px;
@@ -11665,7 +11685,7 @@ figcaption {
     font-weight: 400;
     line-height: 130%}
 .testimon2-image {
-    filter: saturate(0%);
+    /* filter: saturate(0%); */
     border-radius: 100px;
     margin-top: 6px;
 }
@@ -11683,7 +11703,7 @@ figcaption {
     grid-column-gap: 24px;
     grid-row-gap: 24px;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
     margin-top: 12px;
     padding-left: 7px;
     display: flex;
@@ -27265,8 +27285,9 @@ h5 {
     margin-bottom: 20px;
 }
 .testimon-carousel-item {
-    width: 80vw;
+    width: 95vw;
     min-width: 0;
+    min-height: 365px;
 }
 .testimon2-quote {
     font-size: 16px;
@@ -27280,7 +27301,7 @@ h5 {
     grid-row-gap: 12px;
     flex-flow: row;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
 }
 .testimon2-person-info-container {
     width: 100%}
