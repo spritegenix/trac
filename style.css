@@ -10170,7 +10170,7 @@ figcaption {
     color: #686889;
     text-align: center;
     letter-spacing: .009em;
-    max-width: 46ch;
+    max-width: 70ch;
     margin-top: 10px;
     font-size: 16px;
     font-weight: 400;
@@ -10183,7 +10183,7 @@ figcaption {
     background-size: contain;
     background-attachment: scroll;
     width: 100%;
-    min-height: 50%;
+    min-height: 400px;
     margin-top: 20px;
 }
 .our-approach-body {
@@ -10667,7 +10667,7 @@ figcaption {
     background-size: contain;
     background-attachment: scroll;
     width: 100%;
-    min-height: 50%;
+    min-height: 400px;
     margin-top: 20px;
 }
 .fullcard-vis-10percent {
@@ -10677,7 +10677,7 @@ figcaption {
     background-size: contain;
     background-attachment: scroll;
     width: 100%;
-    min-height: 40%}
+    min-height: 400px}
 .midnight-fadeout {
     width: 100vw;
     position: absolute;
@@ -10689,7 +10689,7 @@ figcaption {
     background-size: contain;
     background-attachment: scroll;
     width: 100%;
-    min-height: 40%;
+    min-height: 400px;
     margin-bottom: 24px;
 }
 .fullcard-vis-connection-diagram {
@@ -10699,7 +10699,7 @@ figcaption {
     background-size: contain;
     background-attachment: scroll;
     width: 100%;
-    min-height: 50%;
+    min-height: 400px;
     margin-top: 20px;
 }
 .fullcard-vis-life-cycles {
@@ -11208,7 +11208,7 @@ figcaption {
 }
 .section-1, .section-2, .section-3, .section-4, .section-5, .section-6, .section-8, .section-9 {
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     display: flex;
 }
@@ -11250,9 +11250,9 @@ figcaption {
 }
 .fc1 {
     width: 100vw;
-    height: 100vh;
-    min-height: 900px;
-    padding-top: 85px;
+    /* height: 100vh; */
+    min-height: 750px;
+    /* padding-top: 85px; */
     position: relative;
 }
 .fc1.section-12 {
@@ -26843,7 +26843,7 @@ h5 {
     background-position: 70% 0;
     background-size: 95vw;
     height: auto;
-    min-height: 60%;
+    min-height: 400px;
     overflow: visible;
 }
 .our-approach-body {
@@ -26974,7 +26974,7 @@ h5 {
 .fullcard-vis-10percent {
     background-position: 25% 0;
     background-size: 100vw;
-    min-height: 50%;
+    min-height: 400px;
     overflow: visible;
 }
 .fullcard-vis-67percent-of-workers {
