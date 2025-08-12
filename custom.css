@@ -36,6 +36,25 @@
    ._40ch {
        max-width: 40ch;
    }
+   .fs-14{
+       font-size: 14px !important;
+   }
+
+   .fs-15{
+       font-size: 15px !important;
+   }
+
+   .fs-16{
+       font-size: 16px !important;
+   }
+
+   .fs-17{
+       font-size: 17px !important;
+   }    
+
+   .fs-18{
+       font-size: 18px !important;
+   }
 
    .py-50 {
        padding-top: 50px;
@@ -862,6 +881,9 @@
    .pt-50 {
        padding-top: 50px !important;
    }
+   .pt-20 {
+       padding-top: 20px !important;
+   }
 
    .flex {
        display: flex;
@@ -941,4 +963,9 @@
        margin-bottom: 0 !important;
    }
 
- 
+ .align-start{
+     align-self: start !important;
+ }
+ .align-center{
+     align-self: center !important;
+ }
