@@ -219,6 +219,8 @@
        transition: transform 0.3s ease, box-shadow 0.3s ease;
    }
 
+
+
    .career-card-icon i {
        font-size: 24px;
        color: white;
@@ -969,3 +971,60 @@
  .align-center{
      align-self: center !important;
  }
+
+
+   .author-icon {
+       width: 40px;
+       height: 40px;
+       border-radius: 50%;
+       background: linear-gradient(135deg, var(--trac-red), var(--trac-purple), var(--trac-blue));
+       display: flex;
+       align-items: center;
+       justify-content: center;
+      
+       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+       transition: transform 0.3s ease, box-shadow 0.3s ease;
+   }
+
+   
+
+   .author-icon i {
+       font-size: 24px;
+       color: white;
+       transition: transform 0.3s ease;
+   }
+
+   .author-inner-container:hover .author-icon {
+       transform: scale(1.1);
+       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+   }
+
+   .author-inner-container:hover .author-icon i {
+       transform: rotate(5deg);
+   }
+
+
+
+#tags p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+.blog-tag {
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  background-color: #eee; /* light gray background */
+  border: 1px solid #ccc; /* light gray border */
+  border-radius: 5px; /* rounded corners */
+  font-size: 14px;
+  color: #337ab7; /* blue color */
+  text-underline-offset: 5px;
+  text-decoration: none;
+}
+
+.blog-tag:hover {
+  background-color: #ddd; /* light gray background on hover */
+  color: #23527c; /* darker blue color on hover */
+}
