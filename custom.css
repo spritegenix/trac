@@ -1028,3 +1028,79 @@
   background-color: #ddd; /* light gray background on hover */
   color: #23527c; /* darker blue color on hover */
 }
+
+/* ===== Contact Form Container ===== */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+/* ===== Labels ===== */
+.contact-form label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #333;
+  padding-top: 5px;
+}
+
+/* ===== Inputs & Textarea ===== */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #d4d4d4;
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #fff;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #5b4b8a; /* TRAC accent purple */
+  box-shadow: 0 0 0 3px rgba(91, 75, 138, 0.15);
+}
+
+/* ===== Textarea Specific ===== */
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* ===== Submit Button ===== */
+.contact-form button {
+  cursor: pointer;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #6a4bcf 0%, #4834d4 100%);
+  color: #fff;
+  transition: background 0.3s ease, transform 0.1s ease-in-out;
+}
+
+.contact-form button:hover {
+  background: linear-gradient(90deg, #7f5fff 0%, #5c3af2 100%);
+  transform: translateY(-1px);
+}
+
+.contact-form button:active {
+  transform: translateY(0);
+}
+
+/* ===== Responsiveness ===== */
+@media (max-width: 600px) {
+  .contact-form {
+    gap: 1rem;
+  }
+  .contact-form label {
+    font-size: 0.9rem;
+  }
+}
