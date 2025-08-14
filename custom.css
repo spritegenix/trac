@@ -1216,3 +1216,7 @@
     white-space: normal;
   }
 }
+
+.i-icon:hover i  {
+  color: #00b8aa !important;
+}

@@ -7657,7 +7657,7 @@ figcaption {
 }
 .uui-navbar01_item-heading {
     color: var(--midnight--500);
-    max-width: 200px;
+    max-width: 260px;
     font-family: Inter V \- Subset, Arial, sans-serif;
     font-size: 14px;
     font-weight: 500;
@@ -15138,7 +15138,7 @@ figcaption {
     grid-column-gap: 12px;
     grid-row-gap: 12px;
     flex: 1;
-    min-width: 270px;
+    min-width: 360px;
     margin-left: -10px;
     position: relative;
 }
