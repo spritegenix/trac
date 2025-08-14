@@ -43,6 +43,9 @@
   <link href="style.css" rel="stylesheet" type="text/css" />
   <link href="custom.css" rel="stylesheet" type="text/css" />
   <link href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons/css/all/all.css" rel="stylesheet">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 </head>
   <body class="body-nav-margin">
     <header
@@ -1385,7 +1388,7 @@
                             </div></a
                           >
                           <a
-                            href="/contact/become-a-partner"
+                            href="become-a-partner.html"
                             class="uui-navbar01_dropdown-link w-inline-block"
                             tabindex="0"
                             data-faitracker-click-bind="true"
@@ -1594,24 +1597,28 @@
     <div class="gradient-image-hero section">
       <div class="con-50px-top-bottom-pad w-container">
         <div class="w-layout-grid grid-6-col grid-large-gap lp_form_container">
-          <div
-            id="w-node-_201652a1-c7c2-f845-779e-9c23699d062c-a0d95200"
-            class="webcast-left-container"
-          >
-            <div class="grad-text-ghost-tag">
-              <div class="eyebrow grey-ghost-chip-grad-text">Contact Us</div>
-            </div>
-            <h1 class="text-gradient-1 h2">Interested in TRAC by Threat ResQ?</h1>
-            <div class="rte-blog mt2rem contact w-richtext">
-              <p>
-                 Let's talk! We can’t wait to show you how TRAC can simplify governance, risk, and 
-            compliance management for your organization — from continuous monitoring to seamless audits.
-              </p>
-              <p>&zwj;</p>
-                <p>
-            Prefer to book a demo? <a href="https://cal.com/threatresq/trac-demo-booking">Schedule time with our team!</a>
-            </div>
-          </div>
+         <div
+    id="w-node-_201652a1-c7c2-f845-779e-9c23699d062c-a0d95200"
+    class="webcast-left-container"
+>
+  <div class="grad-text-ghost-tag">
+    <div class="eyebrow grey-ghost-chip-grad-text">Become a Partner</div>
+  </div>
+  <h1 class="text-gradient-1 h2">Interested in Partnering with Threat ResQ?</h1>
+  <div class="rte-blog mt2rem contact w-richtext">
+    <p>
+      Let's talk! We can’t wait to explore how a partnership with Threat ResQ can help deliver
+      innovative governance, risk, and compliance solutions to your clients — from
+      continuous monitoring to seamless audits.
+    </p>
+    <p>&zwj;</p>
+    <p>
+      Prefer to start right away? <a href="https://cal.com/threatresq/partner-demo-booking" target="_blank">
+      Schedule time with our partnership team!</a>
+    </p>
+  </div>
+</div>
+
           <div
             id="w-node-_201652a1-c7c2-f845-779e-9c23699d0647-a0d95200"
             class="pdf-right-container"
@@ -1620,33 +1627,225 @@
               class="card-item light border-top card-shadow white-background"
             >
               <div class="card-item-content white-background">
-                <form action="send-contact.php" method="POST" class="contact-form">
+     <div id="partnerFormRoot"></div>
 
-              <label for="name">Name*</label>
-              <input type="text" id="name" name="name" required />
+  <script type="text/babel">
+    const { useState } = React;
 
-              <label for="organisation">Organisation*</label>
-              <input type="text" id="organisation" name="organisation" required />
+    function PartnerStepperForm() {
+      const [step, setStep] = useState(1);
+      const [formData, setFormData] = useState({
+        organization: "",
+        contactName: "",
+        designation: "",
+        email: "",
+        alternateEmail: "",
+        mobile: "",
+        alternatePhone: "",
+        users: "",
+        city: "",
+        state: "",
+        address: "",
+        requirements: "",
+        captcha: "",
+        subscribe: true
+      });
 
-              <label for="email">Official Email ID*</label>
-              <input type="email" id="email" name="email" required />
+      const handleChange = (e) => {
+        const { name, value, type, checked } = e.target;
+        setFormData(prev => ({ ...prev, [name]: type === "checkbox" ? checked : value }));
+      };
 
-              <label for="mobile">Mobile Number*</label>
-              <input type="tel" id="mobile" name="mobile" pattern="[0-9+ -]{7,15}" required />
+      const nextStep = () => setStep(s => s + 1);
+      const prevStep = () => setStep(s => s - 1);
 
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="5"></textarea>
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("Form submitted:", formData);
+        alert("Form submitted! Check console for data.");
+      };
 
-              <button type="submit" class="button _2024-button grad">
-                <div class="button-text white">Submit</div>
-              </button>
-            </form>
+      return (
+   <form className="partner-form" onSubmit={handleSubmit}>
+  <div className="step-indicator">Step {step} of 3</div>
+
+  {/* STEP 1 */}
+  {step === 1 && (
+    <React.Fragment>
+      <label htmlFor="organization">Organization*</label>
+      <input
+        id="organization"
+        name="organization"
+        value={formData.organization}
+        onChange={handleChange}
+        required
+      />
+
+      <label htmlFor="contactName">Name of Contact*</label>
+      <input
+        id="contactName"
+        name="contactName"
+        value={formData.contactName}
+        onChange={handleChange}
+        required
+      />
+
+      <label htmlFor="designation">Designation of Contact</label>
+      <input
+        id="designation"
+        name="designation"
+        value={formData.designation}
+        onChange={handleChange}
+      />
+
+      <label htmlFor="email">Official Email ID*</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        value={formData.email}
+        onChange={handleChange}
+        required
+      />
+
+      <label htmlFor="alternateEmail">Alternate Email ID</label>
+      <input
+        type="email"
+        id="alternateEmail"
+        name="alternateEmail"
+        value={formData.alternateEmail}
+        onChange={handleChange}
+      />
+
+      <div>
+        <button type="button" onClick={nextStep}>Next</button>
+      </div>
+    </React.Fragment>
+  )}
+
+  {/* STEP 2 */}
+  {step === 2 && (
+    <React.Fragment>
+      <label htmlFor="mobile">Mobile Number*</label>
+      <input
+        type="tel"
+        id="mobile"
+        name="mobile"
+        pattern="[0-9+ -]{7,15}"
+        value={formData.mobile}
+        onChange={handleChange}
+        required
+      />
+
+      <label htmlFor="alternatePhone">Alternate Mobile Number</label>
+      <input
+        type="tel"
+        id="alternatePhone"
+        name="alternatePhone"
+        pattern="[0-9+ -]{7,15}"
+        value={formData.alternatePhone}
+        onChange={handleChange}
+      />
+
+      <label htmlFor="users">Number of Users</label>
+      <input
+        type="number"
+        id="users"
+        name="users"
+        min="1"
+        value={formData.users}
+        onChange={handleChange}
+      />
+
+      <label htmlFor="city">City</label>
+      <input
+        id="city"
+        name="city"
+        value={formData.city}
+        onChange={handleChange}
+      />
+
+      <label htmlFor="state">State</label>
+      <input
+        id="state"
+        name="state"
+        value={formData.state}
+        onChange={handleChange}
+      />
+
+      <div style={{ display: "flex", gap: "1rem" }}>
+        <button type="button" onClick={prevStep}>Back</button>
+        <button type="button" onClick={nextStep}>Next</button>
+      </div>
+    </React.Fragment>
+  )}
+
+  {/* STEP 3 */}
+  {step === 3 && (
+    <React.Fragment>
+      <label htmlFor="address">Address of Organisation</label>
+      <textarea
+        id="address"
+        name="address"
+        rows="3"
+        value={formData.address}
+        onChange={handleChange}
+      ></textarea>
+
+      <label htmlFor="requirements">
+        Specific Requirements <small>(Please specify current solution, pain points, and expectations)</small>
+      </label>
+      <textarea
+        id="requirements"
+        name="requirements"
+        rows="3"
+        value={formData.requirements}
+        onChange={handleChange}
+      ></textarea>
+
+      <label htmlFor="captcha">What is 5 + 1?*</label>
+      <input
+        id="captcha"
+        name="captcha"
+        value={formData.captcha}
+        onChange={handleChange}
+        required
+      />
+
+      <label className="checkbox-label">
+        <input
+          type="checkbox"
+          className="checkbox"
+          name="subscribe"
+          checked={formData.subscribe}
+          onChange={handleChange}
+        />
+        Latest research, product updates & company news in your inbox
+      </label>
+
+      <div className="submit-button">
+        <button type="button" onClick={prevStep}>Back</button>
+        <button type="submit">Submit Opportunity</button>
+      </div>
+    </React.Fragment>
+  )}
+</form>
+  );
+    }
+
+    ReactDOM.createRoot(
+      document.getElementById("partnerFormRoot")
+    ).render(<PartnerStepperForm />);
+  </script>
+
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    
     <div class="section lavendar-grey">
       <div class="con-cta-bar no-top-pad w-container">
         <div class="see-what-youre-missing-card">
