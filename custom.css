@@ -1220,3 +1220,119 @@
 .i-icon:hover i  {
   color: #00b8aa !important;
 }
+
+
+
+
+      .hubspot-newsletter {
+  max-width: 700px;
+  margin: 0 auto;
+  background: #05003a;
+  /* padding: 0.8rem 1rem 3rem 0.8rem; */
+  border-radius: 24px;
+}
+
+.html-embeded-newsletter {
+  width: 100%;
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.newsletter-input {
+  font-size: 1.15rem;
+  padding: 1rem 1rem;
+  border-radius: 23px;
+  border: none;
+  background: #f8faff;
+  color: #171a1f;
+  outline: none;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.newsletter-input:focus {
+  box-shadow: 0 0 0 2px #7e5aff;
+}
+
+.newsletter-privacy {
+  color: #dde1ec;
+  font-size: 12px;
+  margin: 0;
+}
+
+.newsletter-privacy a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.newsletter-btn {
+  background: #7e5aff;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 23px;
+  padding: 0.3rem 2.5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  width: fit-content;
+  margin-top: 10px;
+  box-shadow: 0 1.5px 12px 0 rgba(126, 90, 255, 0.09);
+  transition: background 0.2s;
+}
+
+.newsletter-btn:hover {
+  background: #6c55ff;
+}
+
+@media (max-width: 600px) {
+.newsletter-btn{
+    padding: 1rem 2.5rem;
+}
+    
+}
+
+.trustpilot-review-btn {
+  position: relative;
+  height: 60px; /* match Trustpilot widget height */
+  width: 200px;
+  margin: auto;
+  display: flex;
+  gap: 5px;
+ border: 2px solid white !important; border-radius: 25px !important;
+  justify-content: center;
+  align-items: center;
+  color: #00b8aa;
+  font-weight: 600;
+  font-size: 1.3rem;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 8px;
+  /* background: #794aff; */
+  border: 2px solid #00b8aa;
+  z-index: 10;
+  transition: transform 0.3s ease, background 0.3s ease;
+  
+  /* Gradient border */
+  border: 3px solid transparent;
+  background-clip: padding-box, border-box;
+  background-origin: border-box;
+  /* background-image: 
+    linear-gradient(rgba(126, 90, 255, 0.85), rgba(126, 90, 255, 0.85)), 
+    linear-gradient(135deg, #7e5aff, #ff6bcb, #00f5a0); */
+    box-shadow: 0 1.5px 12px 0 rgba(126, 90, 255, 0.09);
+
+}
+.trustpilot-review-btn:hover{
+  color: white !important;
+}
+
+
+
+.trustpilot-review-btn:hover::after {
+  left: 100%;
+}
