@@ -1336,3 +1336,7 @@
 .trustpilot-review-btn:hover::after {
   left: 100%;
 }
+.footer-flex-container{
+    display: flex !important;
+    justify-content: center !important;
+}
