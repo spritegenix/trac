@@ -1340,3 +1340,10 @@
     display: flex !important;
     justify-content: center !important;
 }
+
+.rectangle-gradient{
+    background: linear-gradient(135deg, var(--trac-red), var(--trac-purple), var(--trac-blue));
+    padding: 0.3rem 0.5rem;
+    color: white;
+    border-radius: 25px;
+}
