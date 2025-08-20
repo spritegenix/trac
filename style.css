@@ -15581,7 +15581,7 @@ figcaption {
 }
 .insertx.screenshot-shadow {
     z-index: 1;
-    background-image: url(https://cdn.prod.website-files.com/631919c37725682ffd5f47d6/67953b66e9833c8dd06b06b8_673d19d8a1109a155ed2e5fe_ss-241119-dashboard-overview-opt.avif);
+    background-image: url("images/trap/dashboard.webp");
     background-size: 947px;
     width: 940px;
     margin: -50px auto -230px;
