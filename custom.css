@@ -1361,3 +1361,90 @@
     color: white;
     border-radius: 25px;
 }
+
+.use-case-text-block h6 {
+    background: -webkit-linear-gradient(135deg, var(--trac-red), var(--trac-purple), var(--trac-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600
+}
+
+.use-case-text-block ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.use-case-text-block li:nth-child(3n+1) {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0.75rem;
+    border-radius: 0.5rem;
+    background-color: var(--midnight--50-ui-bg); /* Light background from custom.css */
+    color: var(--midnight--400); /* Text color from style.css */
+    font-size: 16px;
+    line-height: 1.6;
+    border-right: 4px solid var(--trac-red);
+    position: relative;
+    padding-left: 2.5rem;
+}
+.use-case-text-block li:nth-child(3n+2) {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0.75rem;
+    border-radius: 0.5rem;
+    background-color: var(--midnight--50-ui-bg); /* Light background from custom.css */
+    color: var(--midnight--400); /* Text color from style.css */
+    font-size: 16px;
+    line-height: 1.6;
+    border-right: 4px solid var(--trac-purple);
+    position: relative;
+    padding-left: 2.5rem;
+}
+.use-case-text-block li:nth-child(3n+3) {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0.75rem;
+    border-radius: 0.5rem;
+    background-color: var(--midnight--50-ui-bg); /* Light background from custom.css */
+    color: var(--midnight--400); /* Text color from style.css */
+    font-size: 16px;
+    line-height: 1.6;
+    border-right: 4px solid var(--trac-blue);
+    position: relative;
+    padding-left: 2.5rem;
+}
+
+.use-case-text-block li:nth-child(3n+1)::before {
+    content: "";
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background-color:  var(--trac-red);
+}
+
+.use-case-text-block li:nth-child(3n+2)::before {
+    content: "";
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background-color: var(--trac-purple);
+}
+
+.use-case-text-block li:nth-child(3n+3)::before {
+    content: "";
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background-color: var(--trac-blue)
+}
+
+
