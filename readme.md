@@ -7,3 +7,7 @@ https://docs.google.com/document/d/1uvh8S7DhCSmXKqH2CkfNLAA9JUPBauNVF4-QPYRX7c4/
 #### interface
 
 icons https://www.flaticon.com/search?word=chat&type=uicon
+
+## changes
+
+https://docs.google.com/document/d/1o9Hv_Nz9xNyYB3LTdo0ym_usfBFeiYM-U9-_w9eEKxs/edit?usp=sharing
