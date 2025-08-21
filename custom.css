@@ -1,8 +1,115 @@
-   :root {
-       --trac-red: #FF4B91;
-       --trac-purple: #A94CFC;
-       --trac-blue: #2D9CDB;
-   }
+:root {
+    --midnight--600-â˜…: #010139;
+    --midnight--400: #686889;
+    --purple--600-â˜…: #794aff;
+    --dark-grey\<deleted\|variable-fad759bd\>: #141415;
+    --text-color: #dadada;
+    --white: white;
+    --grey2\<deleted\|variable-98e2d3a1\>: #d7d7e0;
+    --grey1\<deleted\|variable-381cf53c\>: #ebebef;
+    --lavender: #e9e9f5;
+    --midnight--50-ui-bg: #f5f5f7;
+    --light-blue\<deleted\|variable-2976e004\>: #f4f8fb;
+    --gradient2-left\<deleted\|variable-853fc156\>: #60aef8;
+    --gradient2-middle\<deleted\|variable-a6ca46b3\>: #f46692;
+    --gradient2-right: #f3a562;
+    --dawn-red: #f75d69;
+    --teal--600-â˜…: #00b8aa;
+    --gradient1-left: #fa5853;
+    --light-grey\<deleted\|variable-aa958a64\>: #787878;
+    --gradient1-middle: #f46692;
+    --gradient1-right\<deleted\|variable-81d8aa64\>: #ffc444;
+    --tomato\<deleted\|variable-beb7ae6e\>: #fa5853;
+    --midnight--200: #d7d7e0;
+    --grey3\<deleted\|variable-05c7cd99\>: #a3a3b8;
+    --red--500-â˜…: #e81514;
+    --purple--400: #af93ff;
+    --untitled-ui-gray900\<deleted\|variable-f63dbb51\>: #101828;
+    --grey4\<deleted\|variable-c2b9ddfd\>: #757585;
+    --light-grey-2\<deleted\|variable-469496b4\>: whitesmoke;
+    --midnight--300: #a3a3b8;
+    --midnight--500: #343461;
+    --untitled-ui-primary600\<deleted\|variable-c514c1b4\>: #7f56d9;
+    --purple--100: #f4f1ff;
+    --midnight--100: #ebebef;
+    --untitled-ui-gray50\<deleted\|variable-8a511359\>: #f9fafb;
+    --untitled-ui-gray500\<deleted\|variable-68f29e84\>: #343461;
+    --untitled-ui-primary800\<deleted\|variable-ddf4f85f\>: #53389e;
+    --untitled-ui-gray700\<deleted\|variable-d4f37b50\>: #344054;
+    --untitled-ui-gray600\<deleted\|variable-10a0cd12\>: #475467;
+    --untitled-ui-primary700\<deleted\|variable-da4f7fa3\>: #6941c6;
+    --shadows--small--color-1: #1018280f;
+    --shadows--small--color-2: #1018281a;
+    --untitled-ui-gray800\<deleted\|variable-0a1a9f61\>: #1d2939;
+    --untitled-ui-primary100\<deleted\|variable-35a3c723\>: #cdc5d8;
+    --gradient-3-left\<deleted\|variable-1c725318-c4dd-e05b-a1d1-851768e5f4ca\>: #3d82d5;
+    --gradient-3-middle\<deleted\|variable-50c42ae2-188a-e44b-5572-27f2ab5d6715\>: #794aff;
+    --gradient-3-right\<deleted\|variable-fc135f9f-a499-8ab7-ed72-278f2e7c8bd0\>: #bd55af;
+    --blue--200: #e1e9ff;
+    --blue--100: #f0f4ff;
+    --purple--200: #eae3ff;
+    --midnight--700: #01012e;
+    --green--25: #f6fef9;
+    --green--50: #ecfdf3;
+    --green--100: #d1fadf;
+    --green--200: #a6f4c5;
+    --green--300: #6ce9a6;
+    --green--400: #32d583;
+    --green--500-â˜…: #12b76a;
+    --green--600: #039855;
+    --green--700: #027a48;
+    --green--800: #05603a;
+    --purple--500: #946eff;
+    --purple--700: #613bcc;
+    --purple--800: #492d99;
+    --untitled-ui-success700: #027a48;
+    --success-green: #07b845;
+    --orange--25: #fffaf5;
+    --orange--50: #fff6ed;
+    --orange--100: #ffead5;
+    --orange--200: #fddcab;
+    --orange--300: #feb273;
+    --orange--400: #fd853a;
+    --orange--500-â˜…: #fb6514;
+    --orange--600: #ec4a0a;
+    --orange--700: #c4320a;
+    --about-us-ballistic-logo-width: 294px;
+    --blue--300: #b9ccff;
+    --blue--400: #8baaff;
+    --blue--500: #648dff;
+    --blue--600-â˜…: #3d71ff;
+    --blue--700: #315acc;
+    --blue--800: #25449a;
+    --teal--100: #ecf9f8;
+    --aboutus-ballistic-logo-height: 108px;
+    --teal--200: #daf4f2;
+    --teal--300: #a9e5e1;
+    --teal--400: #71d5cd;
+    --teal--500: #41c6bc;
+    --teal--700: #008076;
+    --teal--800: #00665e;
+    --yellow--25: #fffcf5;
+    --yellow--50: #fffaeb;
+    --yellow--100: #fef0c7;
+    --yellow--200: #fedf89;
+    --yellow--300: #fec84b;
+    --yellow--400: #fdb022;
+    --yellow--500: #f79009;
+    --yellow--600: #dc6803;
+    --yellow--700: #b54708;
+    --red--25: #fffbfa;
+    --red--50: #fef3f2;
+    --red--100: #fee4e2;
+    --red--200: #fecdca;
+    --red--300: #fda29b;
+    --red--400: #f97066;
+    --red--600: #d92d20;
+    --red--700: #b42318;
+    --purple--300: #cfbeff;
+    --trac-red:#FF4B91;
+    --trac-purple:#A94CFC;
+    --trac-blue:#2D9CDB;
+}
 
    .bg-white {
        background-color: #fff !important;
@@ -1448,3 +1555,101 @@
 }
 
 
+/* Enhanced FAQ Section Styles */
+.section {
+  font-family: 'Arial', sans-serif;
+}
+
+.con-accordion-item-legacy {
+  border-bottom: 1px solid var(--grey2\<deleted\|variable-98e2d3a1\>);
+  margin-bottom: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.con-accordion-item-legacy-hed {
+  padding: 20px;
+  background: linear-gradient(to right, var(--midnight--50-ui-bg), #e8e8e8);
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  border-radius: 8px 8px 0 0;
+}
+
+.con-accordion-item-legacy-hed:hover {
+  background: linear-gradient(to right, #e8e8e8, #dcdcdc);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.con-accordion-item-legacy-hed .simple-info h5 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--midnight--600-â˜…);
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.con-accordion-item-legacy-hed:hover .simple-info h5 {
+  color: var(--purple--600-â˜…);
+}
+
+.con-accordion-item-legacy-hed .arrow-holder {
+  transition: transform 0.3s ease;
+}
+
+.con-accordion-item-legacy-hed .arrow-holder img {
+  width: 24px;
+  height: 24px;
+  opacity: 0.7;
+}
+.con-grid-faq h3 {
+    margin-bottom: 2rem;
+}
+
+.con-accordion-item-legacy-hed.active {
+  background: linear-gradient(to right, #dcdcdc, #e8e8e8);
+}
+
+.con-accordion-item-legacy-hed.active .arrow-holder {
+  transform: rotate(180deg);
+}
+
+.accordion-item-legacy-detail p{
+  padding: 20px 20px 0;
+  background-color: var(--white);
+  border-top: 1px solid #e0e0e0;
+  border-radius: 0 0 8px 8px;
+}
+.job-description-holder{
+    padding: 0;
+    margin-bottom: 0px !important;
+}
+.accordion-item-legacy-detail .rte-faq {
+  font-size: 16px;
+  color: var(--midnight--400);
+  line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .con-accordion-item-legacy-hed {
+    padding: 15px;
+  }
+
+  .con-accordion-item-legacy-hed .simple-info h5 {
+    font-size: 18px;
+  }
+
+  .accordion-item-legacy-detail {
+    padding: 15px;
+  }
+
+  .accordion-item-legacy-detail .rte-faq {
+    font-size: 15px;
+  }
+}
