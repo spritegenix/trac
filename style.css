@@ -8773,15 +8773,15 @@ figcaption {
     filter: hue-rotate(304deg);
 }
 .ss-home-231019 {
-    background-image: url(https://cdn.prod.website-files.com/631919c37725682ffd5f47d6/651f31a03362f026c5ecd555_Screenshot%20-%20home%20231002%20-%20right.webp);
+    background-image: url("images/trap/dashboard.png");
     background-position: 0 0;
     background-size: 600px;
     border-radius: 12px 0 0;
     width: 100%;
     height: 100%}
 .ss-oauth-risk-231019 {
-    background-image: url(https://cdn.prod.website-files.com/631919c37725682ffd5f47d6/6531bdc3f2b3eec77bbd7be9_Screenshot%202023-10-19%20at%204.36.44%E2%80%AFPM.avif);
-    background-position: 0 54%;
+    background-image: url("images/trap/checklist.png");
+    background-position: 0% 0%;
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 12px 0 0;
@@ -8821,8 +8821,8 @@ figcaption {
     min-height: 250px;
 }
 .ss-genai-pb-nudge-231019 {
-    background-image: url(https://cdn.prod.website-files.com/631919c37725682ffd5f47d6/6531ccc2f94406dad0e2deba_gen%20ai%20-%20preview%20nudges%20231019.avif);
-    background-position: 30% 0;
+    background-image: url("images/trap/control.png");
+    background-position: 0% 0;
     background-repeat: no-repeat;
     background-size: 720px;
     border-top-left-radius: 12px;
@@ -9185,18 +9185,18 @@ figcaption {
     display: block;
 }
 .ss-apps-table-231115 {
-    background-image: url(https://cdn.prod.website-files.com/631919c37725682ffd5f47d6/65550c8a570b7f961dc2db4f_ss-App%20Table%20View%20-%20MBP%2014_%20Crop-231115.avif);
-    background-position: 30% 0;
+    background-image: url("images/trap/evidence.png");
+    background-position: 0% 0;
     background-repeat: no-repeat;
     background-size: 640px;
     border-radius: 12px 0 0;
     width: 100%;
     height: 100%}
 .ss-accounts-filters-231115 {
-    background-image: url(https://cdn.prod.website-files.com/631919c37725682ffd5f47d6/65555ecd75f4578c987e9a52_ss%20-%20Accounts%20-%20Table%20-%20Filters%20Open%20231115.avif);
-    background-position: 21% 0;
+    background-image: url("images/trap/checklist.png");
+    background-position: 0% 0%;
     background-repeat: no-repeat;
-    background-size: 870px;
+    background-size: 600px;
     border-top-left-radius: 12px;
     width: 100%;
     height: 100%}
