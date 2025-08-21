@@ -8779,6 +8779,13 @@ figcaption {
     border-radius: 12px 0 0;
     width: 100%;
     height: 100%}
+.ss-home-231019.trap-policy {
+    background-image: url("images/trap/checklist.png");
+    background-position: 0 0;
+    background-size: 600px;
+    border-radius: 12px 0 0;
+    width: 100%;
+    height: 100%}
 .ss-oauth-risk-231019 {
     background-image: url("images/trap/checklist.png");
     background-position: 0% 0%;
@@ -8787,6 +8794,12 @@ figcaption {
     border-radius: 12px 0 0;
     width: 100%;
     height: 100%}
+.ss-oauth-risk-231019.heath-req {
+    background-image: url("images/trap/requirements.png");
+}
+.ss-oauth-risk-231019.trac-monitor {
+    background-image: url("images/trap/dashboard.png");
+ }
 .ss-oauth-risk-231019.technology-management {
     background-image: url("images/trap/framework.png");
     background-position: 0% 0%;
@@ -8836,6 +8849,9 @@ figcaption {
     border-top-left-radius: 12px;
     width: 100%;
     height: 100%}
+.ss-genai-pb-nudge-231019.trac-evidence {
+    background-image: url("images/trap/evidence.png");
+}
     .ss-genai-pb-nudge-231019.pharma-evidence {
     background-image: url("images/trap/evidence.png");
     background-position: 0% 0;
@@ -9216,6 +9232,10 @@ figcaption {
     border-radius: 12px 0 0;
     width: 100%;
     height: 100%}
+.ss-apps-table-231115.trac-framework {
+    background-image: url("images/trap/framework.png");
+ 
+}
 
 .ss-apps-table-231115.pharma {
     background-image: url("images/trap/control.png");
@@ -9239,6 +9259,17 @@ figcaption {
     border-top-left-radius: 12px;
     width: 100%;
     height: 100%}
+.ss-accounts-filters-231115.health-risk {
+    background-image: url("images/trap/framework.png");
+    background-position: 0% 0%;
+    background-repeat: no-repeat;
+    background-size: 600px;
+    border-top-left-radius: 12px;
+    width: 100%;
+    height: 100%}
+.ss-accounts-filters-231115.trac-control {
+    background-image: url("images/trap/control.png");
+}
 .ss-accounts-filters-231115.technology-control {
     background-image: url("images/trap/control.png");
     background-position: 0% 0%;
