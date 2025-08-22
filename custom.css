@@ -759,7 +759,10 @@
            height: 50px;
            margin-bottom: 12px;
        }
-
+.px-10{
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
        .career-card-icon i {
            font-size: 20px;
        }
