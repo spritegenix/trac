@@ -8762,8 +8762,16 @@ figcaption {
     display: flex;
 }
 .con-3up-card-icon {
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
+}
+.con-3up-card-icon.con-c {
+    width: 50px;
+    height: 50px;
+}
+.con-3up-card-inner i{
+    font-size: 32px;
+    color: var(--trac-purple);
 }
 .con-3up-card-icon.hue-alt-pink {
     opacity: .72;
@@ -8771,6 +8779,14 @@ figcaption {
 }
 .con-3up-card-icon.hue-alt-teal {
     filter: hue-rotate(304deg);
+}
+.con-3up-card-icon.hue-alt-green {
+    opacity: .66;
+    filter: saturate(130%)hue-rotate(250deg);
+}
+.con-3up-card-icon.hue-alt-red {
+    opacity: .66;
+   filter: saturate(140%) sepia(1) hue-rotate(0deg) brightness(1);
 }
 .ss-home-231019 {
     background-image: url("images/trap/dashboard.png");
