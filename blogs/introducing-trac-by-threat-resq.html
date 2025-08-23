@@ -1974,12 +1974,15 @@ Overview
 >
   <div class="html-embed-7 w-embed w-script html-embeded-newsletter">
 
-    <form class="newsletter-form">
+    <form class="newsletter-form" method="POST"  action="subscription.php">
+      
       <input
         class="newsletter-input"
         type="email"
         placeholder="Email address"
         required
+        name="email"
+       
       />
       <p class="newsletter-privacy">
         By subscribing, you consent to the processing of your personal data per our
@@ -1987,6 +1990,7 @@ Overview
         You can unsubscribe or update your preferences at any time.
       </p>
       <button class="newsletter-btn" type="submit">Subscribe now</button>
+      <div class="newsletter-response"></div>
     </form>
   </div>
 </div>
@@ -2512,7 +2516,7 @@ Insurance Compliances</a
     <script src="../js/nudge-1.js"></script>
     <script src="../js/nudge-2.js"></script>
     <script src="../js/nudge-3.js"></script>
-
+ <script src="../js/newsletter.js"></script>
      <div id="target-container"><div></div></div>
 <!-- TrustBox script -->
 <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
