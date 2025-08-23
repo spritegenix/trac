@@ -1705,7 +1705,7 @@ Overview
               class="card-item light border-top card-shadow white-background"
             >
               <div class="card-item-content white-background">
-                <form action="send-contact.php" method="POST" class="contact-form">
+                <form action="mail.php" method="POST" class="contact-form" id="contact-form">
 
               <label for="name">Name*</label>
               <input type="text" id="name" name="name" required />
@@ -1717,14 +1717,15 @@ Overview
               <input type="email" id="email" name="email" required />
 
               <label for="mobile">Mobile Number*</label>
-              <input type="tel" id="mobile" name="mobile" pattern="[0-9+ -]{7,15}" required />
+              <input type="tel" id="mobile" name="mobile"  required />
 
               <label for="message">Message</label>
               <textarea id="message" name="message" rows="5"></textarea>
 
-              <button type="submit" class="button _2024-button grad">
+              <button type="submit" class="button _2024-button grad" id="contact-button">
                 <div class="button-text white">Submit</div>
               </button>
+              <div class="ajax-response"></div>
             </form>
               </div>
             </div>
@@ -2306,7 +2307,7 @@ Insurance Compliances</a
     <script src="js/nudge-1.js"></script>
     <script src="js/nudge-2.js"></script>
     <script src="js/nudge-3.js"></script>
-
+<script src="js/ajax-form.js"></script>
      <div id="target-container"><div></div></div>
 <!-- TrustBox script -->
 <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>

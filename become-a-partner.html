@@ -62,6 +62,57 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "svq1u01gqd");
 </script>
+<style>
+.status-message {
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Changed from center to flex-start */
+  font-weight: 500;
+  /* Removed fixed height and min-height */
+  line-height: 1.4; /* Added for better text spacing */
+  word-wrap: break-word; /* Better word wrapping */
+}
+
+.status-message.success {
+  background-color: #d1edff;
+  border: 1px solid #0969da;
+  color: #0969da;
+}
+
+.status-message.error {
+  background-color: #ffe8e6;
+  border: 1px solid #da1e28;
+  color: #da1e28;
+}
+
+.status-content {
+  flex: 1;
+}
+
+.close-status {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 8px;
+  color: inherit;
+}
+
+.partner-form button:disabled,
+.partner-form button.submitting {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.partner-form button.submitting {
+  background-color: #6c757d;
+}
+
+</style>
 </head>
   <body class="body-nav-margin">
     <header
@@ -1714,11 +1765,15 @@ Overview
               <div class="card-item-content white-background">
      <div id="partnerFormRoot"></div>
 
-  <script type="text/babel">
-    const { useState } = React;
+<script type="text/babel">
+    const { useState, useEffect } = React;
 
     function PartnerStepperForm() {
       const [step, setStep] = useState(1);
+      const [isSubmitting, setIsSubmitting] = useState(false);
+      const [submitStatus, setSubmitStatus] = useState(null); // 'success' or 'error'
+      const [submitMessage, setSubmitMessage] = useState('');
+      
       const [formData, setFormData] = useState({
         organization: "",
         contactName: "",
@@ -1735,196 +1790,305 @@ Overview
         captcha: "",
         subscribe: true
       });
+ useEffect(() => {
+        if (submitStatus === 'success') {
+          const timer = setTimeout(() => {
+            setSubmitStatus(null);
+            setSubmitMessage('');
+          }, 3000);
 
+          return () => clearTimeout(timer);
+        }
+      }, [submitStatus]);
       const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
         setFormData(prev => ({ ...prev, [name]: type === "checkbox" ? checked : value }));
       };
 
-   const nextStep = (currentStep) => {
-  const currentStepFields = document.querySelectorAll(
-    `.partner-form [data-step="${currentStep}"][required]`
-  );
+      const nextStep = (currentStep) => {
+        const currentStepFields = document.querySelectorAll(
+          `.partner-form [data-step="${currentStep}"][required]`
+        );
 
-  let valid = true;
-  currentStepFields.forEach((field) => {
-    if (!field.reportValidity()) {
-      valid = false; // Browser shows error
-    }
-  });
+        let valid = true;
+        currentStepFields.forEach((field) => {
+          if (!field.reportValidity()) {
+            valid = false;
+          }
+        });
 
-  if (!valid) return;
-  setStep((prev) => prev + 1);
-};
+        if (!valid) return;
+        setStep((prev) => prev + 1);
+      };
+      
       const prevStep = () => setStep(s => s - 1);
 
-      const handleSubmit = (e) => {
+      const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Form submitted:", formData);
-        // alert("Form submitted! Check console for data.");
+        
+        // Validate captcha
+        if (formData.captcha !== "6") {
+          setSubmitStatus('error');
+          setSubmitMessage('Please solve the captcha correctly (5 + 1 = 6)');
+          return;
+        }
+
+        setIsSubmitting(true);
+        setSubmitStatus(null);
+        setSubmitMessage('');
+
+        try {
+           const formDataToSend = new URLSearchParams();
+          formDataToSend.append('name', formData.contactName);
+          formDataToSend.append('organisation', formData.organization);
+          formDataToSend.append('email', formData.email);
+          formDataToSend.append('mobile', formData.mobile);
+          formDataToSend.append('designation', formData.designation);
+          formDataToSend.append('users', formData.users);
+          formDataToSend.append('city', formData.city);
+          formDataToSend.append('state', formData.state);
+          formDataToSend.append('address', formData.address);
+          formDataToSend.append('message', formData.requirements);
+          formDataToSend.append('subscribe', formData.subscribe ? '1' : '0');
+   const response = await fetch('/trac-html/partnermail.php', {
+            method: 'POST',
+             headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+            body: formDataToSend
+          });
+
+          if (response.ok) {
+            const result = await response.text();
+            setSubmitStatus('success');
+            setSubmitMessage('Thank you! Your partnership inquiry has been submitted successfully. We will contact you soon.');
+            
+            // Reset form after successful submission
+            setFormData({
+              organization: "",
+              contactName: "",
+              designation: "",
+              email: "",
+              alternateEmail: "",
+              mobile: "",
+              alternatePhone: "",
+              users: "",
+              city: "",
+              state: "",
+              address: "",
+              requirements: "",
+              captcha: "",
+              subscribe: true
+            });
+            setStep(1);
+          } else {
+            const errorText = await response.text();
+            setSubmitStatus('error');
+            setSubmitMessage(errorText || 'Something went wrong. Please try again.');
+          }
+        } catch (error) {
+          setSubmitStatus('error');
+          setSubmitMessage('Network error. Please check your connection and try again.');
+        } finally {
+          setIsSubmitting(false);
+        }
       };
 
       return (
-  <form className="partner-form" onSubmit={handleSubmit}>
-  <div className="step-indicator">Step {step} of 3</div>
+        <div className="partner-form-container">
+          {/* Status Messages */}
+          {submitStatus && (
+            <div className={`status-message ${submitStatus}`}>
+              <div className="status-content">
+                {submitStatus === 'success' ? '✅' : '❌'} {submitMessage}
+              </div>
+              {submitStatus === 'error' && (
+                <button 
+                  className="close-status" 
+                  onClick={() => setSubmitStatus(null)}
+                >
+                  ×
+                </button>
+              )}
+            </div>
+          )}
 
-  {/* STEP 1 */}
-  {step === 1 && (
-    <React.Fragment>
-      <label htmlFor="organization">Organization*</label>
-      <input
-        id="organization"
-        name="organization"
-        data-step="1"
-        value={formData.organization}
-        onChange={handleChange}
-        required
-      />
+          <form className="partner-form" onSubmit={handleSubmit} onClick={(e) => e.stopPropagation()}>
+            <div className="step-indicator">Step {step} of 3</div>
 
-      <label htmlFor="contactName">Name of Contact*</label>
-      <input
-        id="contactName"
-        name="contactName"
-        data-step="1"
-        value={formData.contactName}
-        onChange={handleChange}
-        required
-      />
+            {/* STEP 1 */}
+            {step === 1 && (
+              <React.Fragment>
+                <label htmlFor="organization">Organization*</label>
+                <input
+                  id="organization"
+                  name="organization"
+                  data-step="1"
+                  value={formData.organization}
+                  onChange={handleChange}
+                  required
+                />
 
-      <label htmlFor="designation">Designation of Contact</label>
-      <input
-        id="designation"
-        name="designation"
-        data-step="1"
-        value={formData.designation}
-        onChange={handleChange}
-      />
+                <label htmlFor="contactName">Name of Contact*</label>
+                <input
+                  id="contactName"
+                  name="contactName"
+                  data-step="1"
+                  value={formData.contactName}
+                  onChange={handleChange}
+                  required
+                />
 
-      <label htmlFor="email">Official Email ID*</label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        data-step="1"
-        value={formData.email}
-        onChange={handleChange}
-        required
-      />
+                <label htmlFor="designation">Designation of Contact</label>
+                <input
+                  id="designation"
+                  name="designation"
+                  data-step="1"
+                  value={formData.designation}
+                  onChange={handleChange}
+                />
 
-   
+                <label htmlFor="email">Official Email ID*</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  data-step="1"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
 
-      <div>
-        <button type="button" onClick={() => nextStep(1)}>Next</button>
-      </div>
-    </React.Fragment>
-  )}
+         
+                <div>
+                  <button type="button" onClick={() => nextStep(1)}>Next</button>
+                </div>
+              </React.Fragment>
+            )}
 
-  {/* STEP 2 */}
-  {step === 2 && (
-    <React.Fragment>
-      <label htmlFor="mobile">Mobile Number*</label>
-      <input
-        type="tel"
-        id="mobile"
-        name="mobile"
-        pattern="[0-9+ -]{7,15}"
-        data-step="2"
-        value={formData.mobile}
-        onChange={handleChange}
-        required
-      />
+            {/* STEP 2 */}
+            {step === 2 && (
+              <React.Fragment>
+                <label htmlFor="mobile">Mobile Number*</label>
+                <input
+                  type="tel"
+                  id="mobile"
+                  name="mobile"
+                
+                  data-step="2"
+                  value={formData.mobile}
+                  onChange={handleChange}
+                  required
+                />
 
-   
+           
 
-      <label htmlFor="users">Number of Users</label>
-      <input
-        type="number"
-        id="users"
-        name="users"
-        min="1"
-        data-step="2"
-        value={formData.users}
-        onChange={handleChange}
-      />
+                <label htmlFor="users">Number of Users</label>
+                <input
+                  type="number"
+                  id="users"
+                  name="users"
+                  min="1"
+                  data-step="2"
+                  value={formData.users}
+                  onChange={handleChange}
+                />
 
-      <label htmlFor="city">City</label>
-      <input
-        id="city"
-        name="city"
-        data-step="2"
-        value={formData.city}
-        onChange={handleChange}
-      />
+                <label htmlFor="city">City</label>
+                <input
+                  id="city"
+                  name="city"
+                  data-step="2"
+                  value={formData.city}
+                  onChange={handleChange}
+                />
 
-      <label htmlFor="state">State</label>
-      <input
-        id="state"
-        name="state"
-        data-step="2"
-        value={formData.state}
-        onChange={handleChange}
-      />
+                <label htmlFor="state">State</label>
+                <input
+                  id="state"
+                  name="state"
+                  data-step="2"
+                  value={formData.state}
+                  onChange={handleChange}
+                />
 
-      <div style={{ display: "flex", gap: "1rem" }}>
-        <button type="button" onClick={() => prevStep()}>Back</button>
-        <button type="button" onClick={() => nextStep(2)}>Next</button>
-      </div>
-    </React.Fragment>
-  )}
+                <label htmlFor="address">Address</label>
+                <textarea
+                  id="address"
+                  name="address"
+                  rows="2"
+                  data-step="2"
+                  value={formData.address}
+                  onChange={handleChange}
+                ></textarea>
 
-  {/* STEP 3 */}
-  {step === 3 && (
-    <React.Fragment>
-    
+                <div style={{ display: "flex", gap: "1rem" }}>
+                  <button type="button" onClick={() => prevStep()}>Back</button>
+                  <button type="button" onClick={() => nextStep(2)}>Next</button>
+                </div>
+              </React.Fragment>
+            )}
 
-      <label htmlFor="requirements">
-        Specific Requirements <small>(Please specify current solution, pain points, and expectations)</small>
-      </label>
-      <textarea
-        id="requirements"
-        name="requirements"
-        rows="3"
-        data-step="3"
-        value={formData.requirements}
-        onChange={handleChange}
-      ></textarea>
+            {/* STEP 3 */}
+            {step === 3 && (
+              <React.Fragment>
+                <label htmlFor="requirements">
+                  Specific Requirements <small>(Please specify current solution, pain points, and expectations)</small>
+                </label>
+                <textarea
+                  id="requirements"
+                  name="requirements"
+                  rows="4"
+                  data-step="3"
+                  value={formData.requirements}
+                  onChange={handleChange}
+                ></textarea>
 
-      <label htmlFor="captcha">What is 5 + 1?*</label>
-      <input
-        id="captcha"
-        name="captcha"
-        data-step="3"
-        value={formData.captcha}
-        onChange={handleChange}
-        required
-      />
+                <label htmlFor="captcha">What is 5 + 1?*</label>
+                <input
+                  id="captcha"
+                  name="captcha"
+                  data-step="3"
+                  value={formData.captcha}
+                  onChange={handleChange}
+                  required
+                  placeholder="Enter the answer"
+                />
 
-      <label className="checkbox-label">
-        <input
-          type="checkbox"
-          className="checkbox"
-          name="subscribe"
-          data-step="3"
-          checked={formData.subscribe}
-          onChange={handleChange}
-        />
-        Latest research, product updates & company news in your inbox
-      </label>
+                <label className="checkbox-label">
+                  <input
+                    type="checkbox"
+                    className="checkbox"
+                    name="subscribe"
+                    data-step="3"
+                    checked={formData.subscribe}
+                    onChange={handleChange}
+                  />
+                  Latest research, product updates & company news in your inbox
+                </label>
 
-      <div className="submit-button">
-        <button type="button" onClick={() => prevStep()}>Back</button>
-        <button type="submit">Submit Opportunity</button>
-      </div>
-    </React.Fragment>
-  )}
-</form>
-);
+                <div className="submit-button" style={{ display: "flex", gap: "1rem" }}>
+                  <button type="button" onClick={() => prevStep()}>Back</button>
+                  <button 
+                    type="submit" 
+                    disabled={isSubmitting}
+                    className={isSubmitting ? 'submitting' : ''}
+                  >
+                    {isSubmitting ? 'Submitting...' : 'Submit Opportunity'}
+                  </button>
+                </div>
+              </React.Fragment>
+            )}
+          </form>
+        </div>
+      );
     }
 
     ReactDOM.createRoot(
       document.getElementById("partnerFormRoot")
     ).render(<PartnerStepperForm />);
-  </script>
+</script>
+
 
               </div>
             </div>
