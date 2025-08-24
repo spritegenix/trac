@@ -10271,7 +10271,7 @@ figcaption {
     line-height: 1.33;
 }
 .fullcard-vis-90percent {
-    background-image: url(https://cdn.prod.website-files.com/631919c37725682ffd5f47d6/65dfd273c9d6b0a6411f6cdd_90percent%20outside%20IT%20pie%20v2.avif);
+    background-image: url("/images/trap/58percent.png");
     background-position: 50% 0;
     background-repeat: no-repeat;
     background-size: contain;
@@ -10755,7 +10755,7 @@ figcaption {
     font-size: 20px;
 }
 .fullcard-vis-100percent-v2 {
-    background-image: url(https://cdn.prod.website-files.com/631919c37725682ffd5f47d6/65dce9ce362682627f51d586_100percent%20pie%20v2.avif);
+    background-image: url("images/trap/1800-hours.png");
     background-position: 50% 0;
     background-repeat: no-repeat;
     background-size: contain;
@@ -10765,7 +10765,7 @@ figcaption {
     margin-top: 20px;
 }
 .fullcard-vis-10percent {
-    background-image: url(https://cdn.prod.website-files.com/631919c37725682ffd5f47d6/65ea4e0a75c3e7a001b1dc8d_Legacy%2010percent%20pie%20v3.avif);
+    background-image: url("images/trap/83percent.png");
     background-position: 50% 0;
     background-repeat: no-repeat;
     background-size: contain;
