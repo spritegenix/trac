@@ -110,7 +110,7 @@
     --trac-purple:#A94CFC;
     --trac-blue:#2D9CDB;
 }
-
+@import url('https://cdn-uicons.flaticon.com/3.0.0/uicons-bold-straight/css/uicons-bold-straight.css');
    .bg-white {
        background-color: #fff !important;
    }
@@ -1655,4 +1655,28 @@
   .accordion-item-legacy-detail .rte-faq {
     font-size: 15px;
   }
+}
+
+.related-use-cases-item i {
+    font-size: 40px;
+}
+/* .related-use-cases-item:hover {
+    color: var(--trac-blue);
+} */
+
+.blue{
+    color: var(--trac-blue);
+}
+.red{
+    color: var(--trac-red);
+}
+.brown{
+    color: #a52a2a ;
+}
+.yellow {
+    color: var(--yellow--500);
+}
+
+.green {
+    color: var(--teal--600-â˜…);
 }
