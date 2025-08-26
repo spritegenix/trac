@@ -10058,7 +10058,7 @@ figcaption {
     font-weight: 400
 }
 
-.nudge-icon-purple {
+.trac-icon-purple {
     max-width: 24px
 }
 
@@ -10446,7 +10446,7 @@ figcaption {
 }
 
 .insert5 {
-    background-image: url(https://cdn.prod.website-files.com/631919c37725682ffd5f47d6/65331a0a49d495e08a20d673_ss%20are%20you%20still%20using%20slack%20nudge%20231020.avif);
+    background-image: url(https://cdn.prod.website-files.com/631919c37725682ffd5f47d6/65331a0a49d495e08a20d673_ss%20are%20you%20still%20using%20slack%20trac%20231020.avif);
     background-position: 45%;
     background-repeat: no-repeat;
     background-size: 330px;
@@ -10568,8 +10568,8 @@ figcaption {
     min-height: 250px
 }
 
-.ss-genai-pb-nudge-231019 {
-    background-image: url(https://cdn.prod.website-files.com/631919c37725682ffd5f47d6/6531ccc2f94406dad0e2deba_gen%20ai%20-%20preview%20nudges%20231019.avif);
+.ss-genai-pb-trac-231019 {
+    background-image: url(https://cdn.prod.website-files.com/631919c37725682ffd5f47d6/6531ccc2f94406dad0e2deba_gen%20ai%20-%20preview%20tracs%20231019.avif);
     background-position: 30% 0;
     background-repeat: no-repeat;
     background-size: 720px;
@@ -11317,7 +11317,7 @@ figcaption {
     padding: 0
 }
 
-.nudge-logo-sm {
+.trac-logo-sm {
     z-index: 3;
     flex: none;
     height: 40px;
@@ -11326,7 +11326,7 @@ figcaption {
     position: relative
 }
 
-.nudge-logo-sm.desat {
+.trac-logo-sm.desat {
     opacity: .54;
     filter: brightness(0%)
 }
@@ -12029,8 +12029,8 @@ figcaption {
     height: 100%
 }
 
-.ss-nudge-history-240207 {
-    background-image: url(https://cdn.prod.website-files.com/631919c37725682ffd5f47d6/65c418ac06246937485a7fc4_ss%20nudge%20history%20240207.avif);
+.ss-trac-history-240207 {
+    background-image: url(https://cdn.prod.website-files.com/631919c37725682ffd5f47d6/65c418ac06246937485a7fc4_ss%20trac%20history%20240207.avif);
     background-position: 0 0;
     background-repeat: no-repeat;
     background-size: 430px;
@@ -13961,7 +13961,7 @@ figcaption {
     display: flex
 }
 
-.partner-logo-nudge {
+.partner-logo-trac {
     width: auto;
     height: 60px;
     padding-bottom: 5px
@@ -14617,7 +14617,7 @@ figcaption {
     max-width: 30%
 }
 
-.nudge {
+.trac {
     max-width: 30%
 }
 
@@ -17684,17 +17684,17 @@ figcaption {
     position: relative
 }
 
-.nudges-feature-image:where(.w-variant-b91d3e6b-419d-8c90-71e2-b86131f48266) {
+.tracs-feature-image:where(.w-variant-b91d3e6b-419d-8c90-71e2-b86131f48266) {
     object-fit: cover;
     width: 100%;
     height: 100%
 }
 
-.nudges-feature-image:where(.w-variant-024d68bf-f90c-4051-dd90-db4af1e6055a) {
+.tracs-feature-image:where(.w-variant-024d68bf-f90c-4051-dd90-db4af1e6055a) {
     width: 100%
 }
 
-.nudges-feature-image.blue-100---rainbow-gradient-text-4 {
+.tracs-feature-image.blue-100---rainbow-gradient-text-4 {
     object-fit: cover;
     width: 70%;
     position: absolute;
@@ -20987,11 +20987,11 @@ figcaption {
         margin-left: auto;
         margin-right: auto
     }
-    .nudges-feature-image {
+    .tracs-feature-image {
         object-fit: scale-down;
         max-height: 100%
     }
-    .nudges-feature-image.blue-100---rainbow-gradient-text-4 {
+    .tracs-feature-image.blue-100---rainbow-gradient-text-4 {
         max-height: none;
         top: -11%
     }
@@ -21751,7 +21751,7 @@ figcaption {
         padding-left: 0;
         padding-right: 0
     }
-    .nudge-logo-sm {
+    .trac-logo-sm {
         z-index: 3;
         position: relative
     }
@@ -21989,7 +21989,7 @@ figcaption {
     }
     .concentric,
     .tachtech,
-    .nudge {
+    .trac {
         width: 100%
     }
     .con-customer-callouts {
@@ -22407,14 +22407,14 @@ figcaption {
     .carousel-container {
         margin-top: 50px
     }
-    .nudges-feature-image {
+    .tracs-feature-image {
         max-height: 100%
     }
-    .nudges-feature-image:where(.w-variant-a73ddc7c-ebb0-073d-a7ad-cab5113c79a1) {
+    .tracs-feature-image:where(.w-variant-a73ddc7c-ebb0-073d-a7ad-cab5113c79a1) {
         flex: 1;
         align-self: stretch
     }
-    .nudges-feature-image.blue-100---rainbow-gradient-text-4 {
+    .tracs-feature-image.blue-100---rainbow-gradient-text-4 {
         align-self: center;
         height: 100%;
         margin-top: 160px;
@@ -24130,7 +24130,7 @@ figcaption {
         margin-left: 20px;
         margin-right: 20px
     }
-    .nudge-icon-purple {
+    .trac-icon-purple {
         max-width: 20px
     }
     .section-hero-2 {
@@ -24244,7 +24244,7 @@ figcaption {
         align-items: flex-start;
         min-height: 450px
     }
-    .ss-genai-pb-nudge-231019 {
+    .ss-genai-pb-trac-231019 {
         background-position: 0 0;
         background-size: 850px;
         min-height: 220px
@@ -24376,8 +24376,8 @@ figcaption {
         padding-left: 0;
         padding-right: 0
     }
-    .nudge-logo-sm,
-    .nudge-logo-sm.desat {
+    .trac-logo-sm,
+    .trac-logo-sm.desat {
         width: auto
     }
     .con-large-cta {
@@ -24497,7 +24497,7 @@ figcaption {
         background-size: 710px;
         min-height: 420px
     }
-    .ss-nudge-history-240207 {
+    .ss-trac-history-240207 {
         background-position: 0 0;
         background-size: 850px;
         min-height: 500px
@@ -25276,14 +25276,14 @@ figcaption {
     .blog-image {
         max-width: none
     }
-    .nudges-feature-image:where(.w-variant-ceaea60e-a934-cac6-653c-c96bee90e1ed) {
+    .tracs-feature-image:where(.w-variant-ceaea60e-a934-cac6-653c-c96bee90e1ed) {
         max-width: 100vw
     }
-    .nudges-feature-image:where(.w-variant-024d68bf-f90c-4051-dd90-db4af1e6055a),
-    .nudges-feature-image:where(.w-variant-a73ddc7c-ebb0-073d-a7ad-cab5113c79a1) {
+    .tracs-feature-image:where(.w-variant-024d68bf-f90c-4051-dd90-db4af1e6055a),
+    .tracs-feature-image:where(.w-variant-a73ddc7c-ebb0-073d-a7ad-cab5113c79a1) {
         max-width: none
     }
-    .nudges-feature-image.blue-100---rainbow-gradient-text-4 {
+    .tracs-feature-image.blue-100---rainbow-gradient-text-4 {
         z-index: 1;
         width: 80%;
         max-width: none;
@@ -26956,13 +26956,13 @@ figcaption {
     .con-carousel-inner2 {
         min-width: 350%
     }
-    .nudges-feature-image:where(.w-variant-a73ddc7c-ebb0-073d-a7ad-cab5113c79a1),
-    .nudges-feature-image:where(.w-variant-024d68bf-f90c-4051-dd90-db4af1e6055a),
-    .nudges-feature-image:where(.w-variant-b8b122ec-88e2-f9c2-cf99-7bbf0f173c0a),
-    .nudges-feature-image:where(.w-variant-9cc5f1a3-024a-1f26-c91e-4a10367f1cf9) {
+    .tracs-feature-image:where(.w-variant-a73ddc7c-ebb0-073d-a7ad-cab5113c79a1),
+    .tracs-feature-image:where(.w-variant-024d68bf-f90c-4051-dd90-db4af1e6055a),
+    .tracs-feature-image:where(.w-variant-b8b122ec-88e2-f9c2-cf99-7bbf0f173c0a),
+    .tracs-feature-image:where(.w-variant-9cc5f1a3-024a-1f26-c91e-4a10367f1cf9) {
         max-width: 100vw
     }
-    .nudges-feature-image.blue-100---rainbow-gradient-text-4 {
+    .tracs-feature-image.blue-100---rainbow-gradient-text-4 {
         object-fit: contain;
         width: 100%;
         max-width: 100vw;
@@ -30261,7 +30261,7 @@ figcaption {
     .ss-customize-240207 {
         background-size: 260px
     }
-    .ss-nudge-history-240207 {
+    .ss-trac-history-240207 {
         background-size: 240px
     }
     .ss-still-using-240207 {
@@ -30827,7 +30827,7 @@ figcaption {
         margin-bottom: 0;
         padding-bottom: 50px
     }
-    .partner-logo-nudge {
+    .partner-logo-trac {
         flex: 0 auto
     }
     .con-partner-logos-inner {
@@ -31006,7 +31006,7 @@ figcaption {
     .tachtech {
         max-width: 100%
     }
-    .nudge {
+    .trac {
         max-width: 100px
     }
     .watershed-bg {
@@ -32095,25 +32095,25 @@ figcaption {
         justify-content: center;
         align-items: flex-end
     }
-    .nudges-feature-image:where(.w-variant-ceaea60e-a934-cac6-653c-c96bee90e1ed) {
+    .tracs-feature-image:where(.w-variant-ceaea60e-a934-cac6-653c-c96bee90e1ed) {
         width: 150%
     }
-    .nudges-feature-image:where(.w-variant-57b2deb6-aa6d-95c1-a20b-cec3a7cf9a0e) {
+    .tracs-feature-image:where(.w-variant-57b2deb6-aa6d-95c1-a20b-cec3a7cf9a0e) {
         width: 150%;
         max-width: none
     }
-    .nudges-feature-image:where(.w-variant-a73ddc7c-ebb0-073d-a7ad-cab5113c79a1) {
+    .tracs-feature-image:where(.w-variant-a73ddc7c-ebb0-073d-a7ad-cab5113c79a1) {
         object-fit: fill;
         background-image: linear-gradient(#f0f4ff, #f0f4ff00);
         width: auto;
         max-width: 100vw;
         height: 100%
     }
-    .nudges-feature-image:where(.w-variant-024d68bf-f90c-4051-dd90-db4af1e6055a) {
+    .tracs-feature-image:where(.w-variant-024d68bf-f90c-4051-dd90-db4af1e6055a) {
         width: auto;
         height: 100%
     }
-    .nudges-feature-image.blue-100---rainbow-gradient-text-4 {
+    .tracs-feature-image.blue-100---rainbow-gradient-text-4 {
         object-fit: fill;
         background-image: linear-gradient(#f0f4ff, #f0f4ff00);
         width: 130%;
