@@ -1680,3 +1680,11 @@
 .green {
     color: var(--teal--600-â˜…);
 }
+
+.ajax-response.success {
+  color: green !important;
+}
+
+.ajax-response.error {
+  color: red !important;
+}

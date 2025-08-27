@@ -3,7 +3,7 @@ Options All -Indexes
 
 # Enable Rewrite Engine
 <IfModule mod_rewrite.c>
-    Options +FollowSymlinks
+  
     RewriteEngine On
 
     # Redirect index.html or index to root URL

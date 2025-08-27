@@ -1850,7 +1850,7 @@ Overview
           formDataToSend.append('address', formData.address);
           formDataToSend.append('message', formData.requirements);
           formDataToSend.append('subscribe', formData.subscribe ? '1' : '0');
-   const response = await fetch('/trac-html/partnermail.php', {
+   const response = await fetch('/partnermail.php', {
             method: 'POST',
              headers: {
           'Content-Type': 'application/x-www-form-urlencoded',

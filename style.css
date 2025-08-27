@@ -32164,3 +32164,20 @@ margin-right: auto;
     display: flex;
     gap: 10px;
 }
+.ajax-response {
+  white-space: normal;   /* Allow wrapping */
+  word-wrap: break-word; /* Break long words if needed */
+  word-break: break-word; /* Alternative for some browsers */
+  overflow-wrap: break-word; /* Modern standard */
+  line-height: 20px;
+  width: 100%; /* Ensure container width */
+  display: block; /* Make sure it behaves as block-level */
+}
+
+.ajax-response.success {
+  color: green !important;
+}
+
+.ajax-response.error {
+  color: red !important;
+}
