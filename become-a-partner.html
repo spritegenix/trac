@@ -1854,6 +1854,7 @@ Overview
           formDataToSend.append('address', formData.address);
           formDataToSend.append('message', formData.requirements);
           formDataToSend.append('subscribe', formData.subscribe ? '1' : '0');
+           formDataToSend.append('recaptcha_token', token);
    const response = await fetch('/partnermail.php', {
             method: 'POST',
              headers: {
@@ -1890,7 +1891,7 @@ Overview
             setSubmitStatus('error');
             setSubmitMessage(errorText || 'Something went wrong. Please try again.');
           }
-        });
+        })
         } catch (error) {
           setSubmitStatus('error');
           setSubmitMessage('Network error. Please check your connection and try again.');
