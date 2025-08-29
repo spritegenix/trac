@@ -15,63 +15,87 @@ $dotenv->load();
 // header('Content-Type: application/json');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  // Sanitize and validate input
-  $name = strip_tags(trim($_POST["name"]));
-  $name = str_replace(array("\r", "\n"), array(" ", " "), $name);
-  $organisation = strip_tags(trim($_POST["organisation"]));
-  $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
-  $mobile = trim($_POST["mobile"]);
-  $message = trim($_POST["message"]);
+  $recaptcha_token = $_POST['recaptcha_token'];
 
-  // Optional fields
-  $designation = isset($_POST["designation"]) ? strip_tags(trim($_POST["designation"])) : "";
-  $alternateEmail = isset($_POST["alternateEmail"]) ? filter_var(trim($_POST["alternateEmail"]), FILTER_SANITIZE_EMAIL) : "";
-  $alternatePhone = isset($_POST["alternatePhone"]) ? trim($_POST["alternatePhone"]) : "";
-  $users = isset($_POST["users"]) ? trim($_POST["users"]) : "";
-  $city = isset($_POST["city"]) ? strip_tags(trim($_POST["city"])) : "";
-  $state = isset($_POST["state"]) ? strip_tags(trim($_POST["state"])) : "";
-  $address = isset($_POST["address"]) ? strip_tags(trim($_POST["address"])) : "";
-  $subscribe = isset($_POST["subscribe"]) ? ($_POST["subscribe"] === '1') : false;
+  $url = 'https://www.google.com/recaptcha/api/siteverify';
+  $data = array(
+    'secret' => '6LecHbcrAAAAACPZnLi6zBh-_3SE3vzMWbzRazy_',
+    'response' => $recaptcha_token
+  );
 
-  // Validate required fields
-  if (empty($name) || empty($mobile) || empty($organisation) || empty($message) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    http_response_code(400);
-    echo "Please complete all required fields and provide a valid email address.";
+  $options = array(
+    'http' => array(
+      'method' => 'POST',
+      'header' => 'Content-type: application/x-www-form-urlencoded',
+      'content' => http_build_query($data)
+    )
+  );
+  $context  = stream_context_create($options);
+  $verify = file_get_contents($url, false, $context);
+  $captcha_success = json_decode($verify);
+
+  if ($captcha_success->success == false) {
+    echo "You are a bot! Go away!";
     exit;
-  }
+  } else if ($captcha_success->success == true) {
 
-  // Send email via PHPMailer
-  $mail = new PHPMailer(true);
+    // Sanitize and validate input
+    $name = strip_tags(trim($_POST["name"]));
+    $name = str_replace(array("\r", "\n"), array(" ", " "), $name);
+    $organisation = strip_tags(trim($_POST["organisation"]));
+    $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
+    $mobile = trim($_POST["mobile"]);
+    $message = trim($_POST["message"]);
 
-  try {
-    $mail->isSMTP();
-    $mail->Host = $_ENV['SMTP_HOST'];
-    $mail->SMTPAuth = true;
-    $mail->Username = $_ENV['SMTP_USERNAME'];
-    $mail->Password = $_ENV['SMTP_PASSWORD'];
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port = $_ENV['SMTP_PORT'];
+    // Optional fields
+    $designation = isset($_POST["designation"]) ? strip_tags(trim($_POST["designation"])) : "";
+    $alternateEmail = isset($_POST["alternateEmail"]) ? filter_var(trim($_POST["alternateEmail"]), FILTER_SANITIZE_EMAIL) : "";
+    $alternatePhone = isset($_POST["alternatePhone"]) ? trim($_POST["alternatePhone"]) : "";
+    $users = isset($_POST["users"]) ? trim($_POST["users"]) : "";
+    $city = isset($_POST["city"]) ? strip_tags(trim($_POST["city"])) : "";
+    $state = isset($_POST["state"]) ? strip_tags(trim($_POST["state"])) : "";
+    $address = isset($_POST["address"]) ? strip_tags(trim($_POST["address"])) : "";
+    $subscribe = isset($_POST["subscribe"]) ? ($_POST["subscribe"] === '1') : false;
 
-    $mail->setFrom($_ENV['SMTP_FROM_EMAIL'], $_ENV['SMTP_FROM_NAME']);
-    $mail->addAddress($_ENV['SMTP_FROM_EMAIL'], 'Admin');
-    $mail->addReplyTo($email, $name);
-    $mail->isHTML(true);
-    $mail->Subject = "New Partnership Inquiry - " . $organisation;
-    $mail->isHTML(true);
+    // Validate required fields
+    if (empty($name) || empty($mobile) || empty($organisation) || empty($message) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      http_response_code(400);
+      echo "Please complete all required fields and provide a valid email address.";
+      exit;
+    }
 
-    // Build additional info section
-    $additionalInfo = '';
-    if ($designation) $additionalInfo .= '<tr><td class="label">Designation:</td><td class="value">' . htmlspecialchars($designation) . '</td></tr>';
-    if ($alternateEmail) $additionalInfo .= '<tr><td class="label">Alternate Email:</td><td class="value"><a href="mailto:' . htmlspecialchars($alternateEmail) . '" class="email-link">' . htmlspecialchars($alternateEmail) . '</a></td></tr>';
-    if ($alternatePhone) $additionalInfo .= '<tr><td class="label">Alternate Phone:</td><td class="value">' . htmlspecialchars($alternatePhone) . '</td></tr>';
-    if ($users) $additionalInfo .= '<tr><td class="label">Number of Users:</td><td class="value">' . htmlspecialchars($users) . '</td></tr>';
-    if ($city) $additionalInfo .= '<tr><td class="label">City:</td><td class="value">' . htmlspecialchars($city) . '</td></tr>';
-    if ($state) $additionalInfo .= '<tr><td class="label">State:</td><td class="value">' . htmlspecialchars($state) . '</td></tr>';
-    if ($address) $additionalInfo .= '<tr><td class="label">Address:</td><td class="value">' . nl2br(htmlspecialchars($address)) . '</td></tr>';
+    // Send email via PHPMailer
+    $mail = new PHPMailer(true);
 
-    $subscribeStatus = $subscribe ? 'Yes' : 'No';
+    try {
+      $mail->isSMTP();
+      $mail->Host = $_ENV['SMTP_HOST'];
+      $mail->SMTPAuth = true;
+      $mail->Username = $_ENV['SMTP_USERNAME'];
+      $mail->Password = $_ENV['SMTP_PASSWORD'];
+      $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+      $mail->Port = $_ENV['SMTP_PORT'];
 
-    $mail->Body = '
+      $mail->setFrom($_ENV['SMTP_FROM_EMAIL'], $_ENV['SMTP_FROM_NAME']);
+      $mail->addAddress($_ENV['SMTP_FROM_EMAIL'], 'Admin');
+      $mail->addReplyTo($email, $name);
+      $mail->isHTML(true);
+      $mail->Subject = "New Partnership Inquiry - " . $organisation;
+      $mail->isHTML(true);
+
+      // Build additional info section
+      $additionalInfo = '';
+      if ($designation) $additionalInfo .= '<tr><td class="label">Designation:</td><td class="value">' . htmlspecialchars($designation) . '</td></tr>';
+      if ($alternateEmail) $additionalInfo .= '<tr><td class="label">Alternate Email:</td><td class="value"><a href="mailto:' . htmlspecialchars($alternateEmail) . '" class="email-link">' . htmlspecialchars($alternateEmail) . '</a></td></tr>';
+      if ($alternatePhone) $additionalInfo .= '<tr><td class="label">Alternate Phone:</td><td class="value">' . htmlspecialchars($alternatePhone) . '</td></tr>';
+      if ($users) $additionalInfo .= '<tr><td class="label">Number of Users:</td><td class="value">' . htmlspecialchars($users) . '</td></tr>';
+      if ($city) $additionalInfo .= '<tr><td class="label">City:</td><td class="value">' . htmlspecialchars($city) . '</td></tr>';
+      if ($state) $additionalInfo .= '<tr><td class="label">State:</td><td class="value">' . htmlspecialchars($state) . '</td></tr>';
+      if ($address) $additionalInfo .= '<tr><td class="label">Address:</td><td class="value">' . nl2br(htmlspecialchars($address)) . '</td></tr>';
+
+      $subscribeStatus = $subscribe ? 'Yes' : 'No';
+
+      $mail->Body = '
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -180,14 +204,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </html>
 ';
 
-    $mail->send();
+      $mail->send();
 
-    http_response_code(200);
-    echo "Email sent successfully";
-  } catch (Exception $e) {
-    http_response_code(500);
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-    exit;
+      http_response_code(200);
+      echo "Email sent successfully";
+    } catch (Exception $e) {
+      http_response_code(500);
+      echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+      exit;
+    }
   }
 } else {
   http_response_code(405);

@@ -45,6 +45,7 @@
     content="https://your-trac-security-site.com/trac-security-image.png"
     property="twitter:image"
   /> -->
+    <script src="https://www.google.com/recaptcha/api.js?render=6LecHbcrAAAAAMaTdFFbFgjUudCg63XMp8mYSzx8"></script>
   <meta property="og:type" content="website" />
   <meta content="summary_large_image" name="twitter:card" />
   <meta content="width=device-width, initial-scale=1" name="viewport" />
@@ -1838,6 +1839,9 @@ Overview
         setSubmitMessage('');
 
         try {
+            grecaptcha.ready(async function() {
+      const token = await grecaptcha.execute('6LecHbcrAAAAAMaTdFFbFgjUudCg63XMp8mYSzx8', {action: 'partner_form'});
+
            const formDataToSend = new URLSearchParams();
           formDataToSend.append('name', formData.contactName);
           formDataToSend.append('organisation', formData.organization);
@@ -1886,6 +1890,7 @@ Overview
             setSubmitStatus('error');
             setSubmitMessage(errorText || 'Something went wrong. Please try again.');
           }
+        });
         } catch (error) {
           setSubmitStatus('error');
           setSubmitMessage('Network error. Please check your connection and try again.');
