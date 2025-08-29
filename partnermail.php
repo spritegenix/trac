@@ -1,3 +1,6 @@
+
+
+
 <?php
 // Import PHPMailer classes
 use PHPMailer\PHPMailer\PHPMailer;
@@ -77,142 +80,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $mail->Port = $_ENV['SMTP_PORT'];
 
       $mail->setFrom($_ENV['SMTP_FROM_EMAIL'], $_ENV['SMTP_FROM_NAME']);
-      $mail->addAddress($_ENV['SMTP_FROM_EMAIL'], 'Admin');
+      $mail->addAddress('partners@threatresq.com', 'Admin');
       $mail->addReplyTo($email, $name);
       $mail->isHTML(true);
       $mail->Subject = "New Partnership Inquiry - " . $organisation;
-      $mail->isHTML(true);
-
-      // Build additional info section
-      $additionalInfo = '';
-      if ($designation) $additionalInfo .= '<tr><td class="label">Designation:</td><td class="value">' . htmlspecialchars($designation) . '</td></tr>';
-      if ($alternateEmail) $additionalInfo .= '<tr><td class="label">Alternate Email:</td><td class="value"><a href="mailto:' . htmlspecialchars($alternateEmail) . '" class="email-link">' . htmlspecialchars($alternateEmail) . '</a></td></tr>';
-      if ($alternatePhone) $additionalInfo .= '<tr><td class="label">Alternate Phone:</td><td class="value">' . htmlspecialchars($alternatePhone) . '</td></tr>';
-      if ($users) $additionalInfo .= '<tr><td class="label">Number of Users:</td><td class="value">' . htmlspecialchars($users) . '</td></tr>';
-      if ($city) $additionalInfo .= '<tr><td class="label">City:</td><td class="value">' . htmlspecialchars($city) . '</td></tr>';
-      if ($state) $additionalInfo .= '<tr><td class="label">State:</td><td class="value">' . htmlspecialchars($state) . '</td></tr>';
-      if ($address) $additionalInfo .= '<tr><td class="label">Address:</td><td class="value">' . nl2br(htmlspecialchars($address)) . '</td></tr>';
-
-      $subscribeStatus = $subscribe ? 'Yes' : 'No';
-
-      $mail->Body = '
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>New Partnership Inquiry</title>
-<style>
-  body {
-    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-    background: #f6f8fa;
-    padding: 0; margin: 0;
-    color: #24292f;
-  }
-  .container {
-    max-width: 600px;
-    margin: 32px auto;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(30,34,90,0.09);
-    padding: 32px 24px 24px 24px;
-  }
-  .header {
-    font-size: 1.7em;
-    font-weight: 700;
-    color: #0077c5;
-    margin-bottom: 10px;
-  }
-  hr {
-    border: 0;
-    border-top: 2px solid #1CA8DD;
-    margin: 0 0 24px 0;
-  }
-  .info-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  .info-table td {
-    padding: 7px 0;
-    vertical-align: top;
-    font-size: 15px;
-  }
-  .label {
-    font-weight: 600;
-    color: #0F4C81;
-    width: 140px;
-  }
-  .value {
-    color: #24292f;
-  }
-  .email-link { color: #0077c5; text-decoration: underline; }
-  .message-box {
-    margin-top: 12px;
-    background: #f3f3f3;
-    border-radius: 5px;
-    padding: 12px 16px;
-    font-size: 16px;
-    color: #454545;
-    border: 1px solid #e1e4e8;
-    min-height: 38px;
-    line-height: 1.6;
-    font-family: inherit;
-    white-space: pre-line;
-  }
-  .section-title {
-    font-size: 1.2em;
-    font-weight: 600;
-    color: #0F4C81;
-    margin: 24px 0 12px 0;
-  }
-</style>
-</head>
-<body>
-  <div class="container">
-    <div class="header">New Partnership Inquiry</div>
-    <hr>
-    
-    <div class="section-title">Contact Information</div>
-    <table class="info-table">
-      <tr>
-        <td class="label">Name:</td>
-        <td class="value">' . htmlspecialchars($name) . '</td>
-      </tr>
-      <tr>
-        <td class="label">Organization:</td>
-        <td class="value">' . htmlspecialchars($organisation) . '</td>
-      </tr>
-      <tr>
-        <td class="label">Email:</td>
-        <td class="value"><a href="mailto:' . htmlspecialchars($email) . '" class="email-link">' . htmlspecialchars($email) . '</a></td>
-      </tr>
-      <tr>
-        <td class="label">Mobile:</td>
-        <td class="value">' . htmlspecialchars($mobile) . '</td>
-      </tr>
-      ' . $additionalInfo . '
-      <tr>
-        <td class="label">Newsletter:</td>
-        <td class="value">' . $subscribeStatus . '</td>
-      </tr>
-    </table>
-    
-    ' . ($message ? '<div class="section-title">Requirements</div>
-    <div class="message-box">' . nl2br(htmlspecialchars($message)) . '</div>' : '') . '
-  </div>
-</body>
-</html>
-';
+      $mail->Body = "
+        Name: $name<br>
+        Organisation: $organisation<br>
+        Email: $email<br>
+        Mobile: $mobile<br>
+        Designation: $designation<br>
+        Number of Users: $users<br>
+        City: $city<br>
+        State: $state<br>
+        Address: $address<br>
+        Specific Requirements: $message<br>
+        Subscribe to Newsletter: $subscribe<br>
+      ";
 
       $mail->send();
 
       http_response_code(200);
-      echo "Email sent successfully";
+      echo "Thank you! We will contact you soon.";
     } catch (Exception $e) {
       http_response_code(500);
       echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
       exit;
     }
+  } else {
+    echo "reCAPTCHA verification failed. Please try again.";
   }
 } else {
   http_response_code(405);
