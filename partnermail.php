@@ -221,7 +221,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         <div class='footer'>
             <p>This inquiry was submitted through the TRAC Security partnership form.</p>
-            <p>Please respond within 24-48 hours for best customer experience.</p>
+         
         </div>
     </div>
 </body>
