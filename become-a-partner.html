@@ -1823,82 +1823,103 @@ Overview
       };
       
       const prevStep = () => setStep(s => s - 1);
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  
+  // Validate captcha
+  if (formData.captcha !== "6") {
+    setSubmitStatus('error');
+    setSubmitMessage('Please solve the captcha correctly (5 + 1 = 6)');
+    return;
+  }
 
-      const handleSubmit = async (e) => {
-        e.preventDefault();
+  setIsSubmitting(true);
+  setSubmitStatus(null);
+  setSubmitMessage('');
+
+  try {
+    // Make sure grecaptcha is loaded
+    if (typeof grecaptcha === 'undefined') {
+      throw new Error('reCAPTCHA not loaded');
+    }
+
+    grecaptcha.ready(async function() {
+      try {
+        const token = await grecaptcha.execute('6LecHbcrAAAAAMaTdFFbFgjUudCg63XMp8mYSzx8', {action: 'partner_form'});
         
-        // Validate captcha
-        if (formData.captcha !== "6") {
-          setSubmitStatus('error');
-          setSubmitMessage('Please solve the captcha correctly (5 + 1 = 6)');
-          return;
+        if (!token) {
+          throw new Error('Failed to get reCAPTCHA token');
         }
 
-        setIsSubmitting(true);
-        setSubmitStatus(null);
-        setSubmitMessage('');
+        const formDataToSend = new URLSearchParams();
+        formDataToSend.append('name', formData.contactName);
+        formDataToSend.append('organisation', formData.organization);
+        formDataToSend.append('email', formData.email);
+        formDataToSend.append('mobile', formData.mobile);
+        formDataToSend.append('designation', formData.designation);
+        formDataToSend.append('users', formData.users);
+        formDataToSend.append('city', formData.city);
+        formDataToSend.append('state', formData.state);
+        formDataToSend.append('address', formData.address);
+        formDataToSend.append('message', formData.requirements);
+        formDataToSend.append('subscribe', formData.subscribe ? '1' : '0');
+        // CRITICAL: Add the reCAPTCHA token
+        formDataToSend.append('recaptcha_token', token);
 
-        try {
-            grecaptcha.ready(async function() {
-      const token = await grecaptcha.execute('6LecHbcrAAAAAMaTdFFbFgjUudCg63XMp8mYSzx8', {action: 'partner_form'});
+        console.log('Sending form data with reCAPTCHA token:', token.substring(0, 20) + '...');
 
-           const formDataToSend = new URLSearchParams();
-          formDataToSend.append('name', formData.contactName);
-          formDataToSend.append('organisation', formData.organization);
-          formDataToSend.append('email', formData.email);
-          formDataToSend.append('mobile', formData.mobile);
-          formDataToSend.append('designation', formData.designation);
-          formDataToSend.append('users', formData.users);
-          formDataToSend.append('city', formData.city);
-          formDataToSend.append('state', formData.state);
-          formDataToSend.append('address', formData.address);
-          formDataToSend.append('message', formData.requirements);
-          formDataToSend.append('subscribe', formData.subscribe ? '1' : '0');
-           formDataToSend.append('recaptcha_token', token);
-   const response = await fetch('/partnermail.php', {
-            method: 'POST',
-             headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-            body: formDataToSend
+        const response = await fetch('/partnermail.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: formDataToSend
+        });
+
+        const result = await response.text();
+        console.log('Server response:', result);
+
+        if (response.ok) {
+          setSubmitStatus('success');
+          setSubmitMessage('Thank you! Your partnership inquiry has been submitted successfully. We will contact you soon.');
+          
+          // Reset form after successful submission
+          setFormData({
+            organization: "",
+            contactName: "",
+            designation: "",
+            email: "",
+            alternateEmail: "",
+            mobile: "",
+            alternatePhone: "",
+            users: "",
+            city: "",
+            state: "",
+            address: "",
+            requirements: "",
+            captcha: "",
+            subscribe: true
           });
-
-          if (response.ok) {
-            const result = await response.text();
-            setSubmitStatus('success');
-            setSubmitMessage('Thank you! Your partnership inquiry has been submitted successfully. We will contact you soon.');
-            
-            // Reset form after successful submission
-            setFormData({
-              organization: "",
-              contactName: "",
-              designation: "",
-              email: "",
-              alternateEmail: "",
-              mobile: "",
-              alternatePhone: "",
-              users: "",
-              city: "",
-              state: "",
-              address: "",
-              requirements: "",
-              captcha: "",
-              subscribe: true
-            });
-            setStep(1);
-          } else {
-            const errorText = await response.text();
-            setSubmitStatus('error');
-            setSubmitMessage(errorText || 'Something went wrong. Please try again.');
-          }
-        })
-        } catch (error) {
+          setStep(1);
+        } else {
           setSubmitStatus('error');
-          setSubmitMessage('Network error. Please check your connection and try again.');
-        } finally {
-          setIsSubmitting(false);
+          setSubmitMessage(result || 'Something went wrong. Please try again.');
         }
-      };
+      } catch (tokenError) {
+        console.error('reCAPTCHA token error:', tokenError);
+        setSubmitStatus('error');
+        setSubmitMessage('reCAPTCHA verification failed. Please try again.');
+      } finally {
+        setIsSubmitting(false);
+      }
+    });
+  } catch (error) {
+    console.error('Form submission error:', error);
+    setSubmitStatus('error');
+    setSubmitMessage('Network error. Please check your connection and try again.');
+    setIsSubmitting(false);
+  }
+};
 
       return (
         <div className="partner-form-container">
