@@ -10,46 +10,63 @@ $(function () {
     // Stop the browser from submitting the form.
     e.preventDefault();
 
-    // Serialize the form data.
-    var formData = $(form).serialize();
-    // Submit the form using AJAX.
-    $('#contact-button').text('Sending...');
-    $.ajax({
-      type: 'POST',
-      url: $(form).attr('action'),
-      data: formData,
-    })
-      .done(function (response) {
-        // Make sure that the formMessages div has the 'success' class.
-        $(formMessages).removeClass('error');
-        $(formMessages).addClass('success');
+    // Get the site key
+    var siteKey = '6LecHbcrAAAAAMaTdFFbFgjUudCg63XMp8mYSzx8';
 
-        // Set the message text.
-        $(formMessages).text(response);
+    // Disable the submit button
+    $('#contact-button').prop('disabled', true).text('Sending...');
 
-        // Clear the form.
-        $('#contact-form input,#contact-form textarea').val('');
-        $('#contact-button').text('Sent!');
-        setTimeout(() => {
-          $('#contact-button').text('Send Message');
-        }, 3000);
-      })
-      .fail(function (data) {
-        // Make sure that the formMessages div has the 'error' class.
-        $(formMessages).removeClass('success');
-        $(formMessages).addClass('error');
+    grecaptcha.ready(function () {
+      grecaptcha
+        .execute(siteKey, { action: 'contact_form' })
+        .then(function (token) {
+          // Add the token to the form data.
+          var formData = $(form).serialize() + '&recaptcha_token=' + token;
 
-        // Set the message text.
-        if (data.responseText !== '') {
-          $(formMessages).text(data.responseText);
-        } else {
-          $(formMessages).text(
-            'Oops! An error occured and your message could not be sent.'
-          );
-        }
-        setTimeout(() => {
-          $('#contact-button').text('Send Message');
-        }, 3000);
-      });
+          // Submit the form using AJAX.
+          $.ajax({
+            type: 'POST',
+            url: $(form).attr('action'),
+            data: formData,
+          })
+            .done(function (response) {
+              // Make sure that the formMessages div has the 'success' class.
+              $(formMessages).removeClass('error');
+              $(formMessages).addClass('success');
+
+              // Set the message text.
+              $(formMessages).text(response);
+
+              // Clear the form.
+              $('#contact-form input,#contact-form textarea').val('');
+              $('#contact-button').text('Sent!').prop('disabled', false);
+              setTimeout(() => {
+                $('#contact-button')
+                  .text('Send Message')
+                  .prop('disabled', false);
+              }, 3000);
+            })
+            .fail(function (data) {
+              // Make sure that the formMessages div has the 'error' class.
+              $(formMessages).removeClass('success');
+              $(formMessages).addClass('error');
+
+              // Set the message text.
+              if (data.responseText !== '') {
+                $(formMessages).text(data.responseText);
+              } else {
+                $(formMessages).text(
+                  'Oops! An error occured and your message could not be sent.'
+                );
+              }
+              $('#contact-button').text('Send Message').prop('disabled', false);
+              setTimeout(() => {
+                $('#contact-button')
+                  .text('Send Message')
+                  .prop('disabled', false);
+              }, 3000);
+            });
+        });
+    });
   });
 });

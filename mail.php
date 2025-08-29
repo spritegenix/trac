@@ -12,41 +12,62 @@ $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $name = strip_tags(trim($_POST["name"]));
-  $name = str_replace(array("\r", "\n"), array(" ", " "), $name);
-  $organisation = strip_tags(trim($_POST["organisation"]));
-  // $lastname = str_replace(array("\r", "\n"), array(" ", " "), $lastname);
-  $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
-  // $website = isset($_POST["website"]) && !empty(trim($_POST["website"])) ? trim($_POST["website"]) : "";
-  // $subject =  trim($_POST["selected"]);
-  $message = trim($_POST["message"]);
-  $mobile = trim($_POST["mobile"]);
+  $recaptcha_token = $_POST['recaptcha_token'];
+  $url = 'https://www.google.com/recaptcha/api/siteverify';
+  $data = array(
+    'secret' => '6LecHbcrAAAAACPZnLi6zBh-_3SE3vzMWbzRazy_',
+    'response' => $recaptcha_token
+  );
 
-  // Validate fields
-  if (empty($name) || empty($mobile) || empty($organisation)  || empty($message) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    http_response_code(400);
-    echo "Please complete the form and try again.";
-    exit;
-  }
+  $options = array(
+    'http' => array(
+      'method' => 'POST',
+      'header' => 'Content-type: application/x-www-form-urlencoded',
+      'content' => http_build_query($data)
+    )
+  );
+  $context  = stream_context_create($options);
+  $verify = file_get_contents($url, false, $context);
+  $captcha_success = json_decode($verify);
 
-  // Send email via PHPMailer
-  $mail = new PHPMailer(true);
+  if ($captcha_success->success == false) {
+    echo "<p>You are a bot! Go away!</p>";
+  } else if ($captcha_success->success == true) {
+    $name = strip_tags(trim($_POST["name"]));
+    $name = str_replace(array("\r", "\n"), array(" ", " "), $name);
+    $organisation = strip_tags(trim($_POST["organisation"]));
+    // $lastname = str_replace(array("\r", "\n"), array(" ", " "), $lastname);
+    $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
+    // $website = isset($_POST["website"]) && !empty(trim($_POST["website"])) ? trim($_POST["website"]) : "";
+    // $subject =  trim($_POST["selected"]);
+    $message = trim($_POST["message"]);
+    $mobile = trim($_POST["mobile"]);
 
-  try {
-    $mail->isSMTP();
-    $mail->Host = $_ENV['SMTP_HOST'];
-    $mail->SMTPAuth = true;
-    $mail->Username = $_ENV['SMTP_USERNAME'];
-    $mail->Password = $_ENV['SMTP_PASSWORD'];
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port = $_ENV['SMTP_PORT'];
+    // Validate fields
+    if (empty($name) || empty($mobile) || empty($organisation)  || empty($message) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      http_response_code(400);
+      echo "Please complete the form and try again.";
+      exit;
+    }
 
-    $mail->setFrom($_ENV['SMTP_FROM_EMAIL'], $_ENV['SMTP_FROM_NAME']);
-    $mail->addAddress($_ENV['SMTP_FROM_EMAIL'], 'Admin');
-    $mail->addReplyTo($email, $name);
-    $mail->Subject = "New Enquiry";
-    $mail->isHTML(true);
-    $mail->Body = '
+    // Send email via PHPMailer
+    $mail = new PHPMailer(true);
+
+    try {
+      $mail->isSMTP();
+      $mail->Host = $_ENV['SMTP_HOST'];
+      $mail->SMTPAuth = true;
+      $mail->Username = $_ENV['SMTP_USERNAME'];
+      $mail->Password = $_ENV['SMTP_PASSWORD'];
+      $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+      $mail->Port = $_ENV['SMTP_PORT'];
+
+      $mail->setFrom($_ENV['SMTP_FROM_EMAIL'], $_ENV['SMTP_FROM_NAME']);
+      $mail->addAddress($_ENV['SMTP_FROM_EMAIL'], 'Admin');
+      $mail->addReplyTo($email, $name);
+      $mail->Subject = "New Enquiry";
+      $mail->isHTML(true);
+      $mail->Body = '
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -144,18 +165,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ';
 
 
-    $mail->isHTML(true); // Ensure HTML format is enabled
+      $mail->isHTML(true); // Ensure HTML format is enabled
 
-    $mail->send();
+      $mail->send();
 
-    http_response_code(200);
-    echo "Your inquiry has been submitted. We appreciate your interest and will respond soon.";
-  } catch (Exception $e) {
-    http_response_code(500);
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-    exit;
+      http_response_code(200);
+      echo "Your inquiry has been submitted. We appreciate your interest and will respond soon.";
+    } catch (Exception $e) {
+      http_response_code(500);
+      echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+      exit;
+    }
+  } else {
+    http_response_code(403);
+    echo "There was a problem with your submission, please try again.";
   }
-} else {
-  http_response_code(403);
-  echo "There was a problem with your submission, please try again.";
 }
