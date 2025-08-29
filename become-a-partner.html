@@ -1866,7 +1866,6 @@ const handleSubmit = async (e) => {
         // CRITICAL: Add the reCAPTCHA token
         formDataToSend.append('recaptcha_token', token);
 
-        console.log('Sending form data with reCAPTCHA token:', token.substring(0, 20) + '...');
 
         const response = await fetch('/partnermail.php', {
           method: 'POST',
@@ -1877,7 +1876,6 @@ const handleSubmit = async (e) => {
         });
 
         const result = await response.text();
-        console.log('Server response:', result);
 
         if (response.ok) {
           setSubmitStatus('success');
