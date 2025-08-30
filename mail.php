@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $captcha_success = json_decode($verify);
 
   if ($captcha_success->success == false) {
-    echo "<p>You are a bot! Go away!</p>";
+    echo "reCAPTCHA verification failed.";
   } else if ($captcha_success->success == true) {
     $name = strip_tags(trim($_POST["name"]));
     $name = str_replace(array("\r", "\n"), array(" ", " "), $name);
